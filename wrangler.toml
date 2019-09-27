@@ -1,0 +1,12 @@
+# www.avery.workers.dev
+name = "www"
+type = "webpack"
+workers_dev = true
+
+[site]
+bucket = "./public"
+entry-point = "workers-site"
+
+# averyharnish.com
+[env.production]
+route = "averyharnish.com/*"
