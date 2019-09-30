@@ -33,3 +33,10 @@
     target: "#sideNav"
   });
 })(jQuery); // End of use strict
+
+function copy() {
+  var copyText = document.querySelector("#nums-to-copy");
+  copyText.select();
+  document.execCommand("copy");
+  console.log("copying " + copyText);
+}
