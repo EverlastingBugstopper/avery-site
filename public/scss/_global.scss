@@ -33,6 +33,16 @@ h2 {
   font-size: 3.5rem;
 }
 
+a {
+  &:hover {
+    color: $white !important;
+    background-color: $primary !important;
+    text-decoration: none;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+}
+
 h3 {
   font-size: 2rem;
 }
@@ -54,8 +64,7 @@ p.lead {
     display: inline-block;
     height: 3.5rem;
     width: 3.5rem;
-    background-color: $gray-700;
-    color: $white !important;
+    color: $gray-800 !important;
     border-radius: 100%;
     text-align: center;
     font-size: 1.5rem;
@@ -66,6 +75,7 @@ p.lead {
     }
     &:hover {
       background-color: $primary;
+      color: white !important;
     }
   }
 }
@@ -77,4 +87,8 @@ p.lead {
       color: $primary;
     }
   }
+}
+
+.dark {
+  color: $gray-800 !important;
 }
