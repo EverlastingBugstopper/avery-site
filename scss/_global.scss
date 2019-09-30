@@ -34,12 +34,13 @@ h2 {
 }
 
 a {
+  line-height: 1.5rem;
+  padding: 0.25rem;
   &:hover {
+    text-shadow: 2px 2px $gray-800;
     color: $white !important;
     background-color: $primary !important;
     text-decoration: none;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
   }
 }
 
@@ -60,22 +61,26 @@ p.lead {
 }
 
 .social-icons {
-  a {
+  span {
     display: inline-block;
     height: 3.5rem;
     width: 3.5rem;
     color: $gray-800 !important;
     border-radius: 100%;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 200%;
     line-height: 3.5rem;
-    margin-right: 1rem;
+    margin: auto;
     &:last-child {
       margin-right: 0;
     }
     &:hover {
-      background-color: $primary;
+      text-shadow: 2px 2px $gray-800 !important;
+      background-color: $primary !important;
       color: white !important;
+    }
+    a {
+      all: inherit;
     }
   }
 }

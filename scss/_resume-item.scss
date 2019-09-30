@@ -3,10 +3,17 @@ section.resume-section {
   padding-bottom: 5rem !important;
   max-width: 75rem;
   .resume-item {
-    .resume-content {}
+    .resume-content {
+    }
     .resume-date {
       min-width: none;
     }
+  }
+  [mega-millions] {
+    text-align: center;
+    width: auto;
+    color: #343a40;
+    font-size: 250%;
   }
 }
 @media (min-width: 768px) {

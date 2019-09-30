@@ -2,7 +2,10 @@ import {
   getAssetFromKV,
   mapRequestToAsset
 } from "@cloudflare/kv-asset-handler";
-import { MegaMillionsElementHandler } from "./megamillions/rewriter";
+import {
+  MegaMillionsElementHandler,
+  CopyStringRewriter
+} from "./megamillions/rewriter";
 import { lottoFormatter, lottoGenerator } from "./megamillions/lotto";
 
 /**
@@ -12,7 +15,7 @@ import { lottoFormatter, lottoGenerator } from "./megamillions/lotto";
  * 2. we will return an error message on exception in your Response rather
  *    than the default 404.html page.
  */
-const DEBUG = false;
+const DEBUG = true;
 
 addEventListener("fetch", event => {
   try {
@@ -48,7 +51,12 @@ async function handleEvent(event) {
       `strong[mega-millions]`,
       new MegaMillionsElementHandler(lottoStrings)
     );
-    return megaMillionsRewriter.transform(response);
+    const copyStringRewriter = new HTMLRewriter().on(
+      `#nums-to-copy`,
+      new CopyStringRewriter(lottoStrings)
+    );
+    response = await megaMillionsRewriter.transform(response);
+    return copyStringRewriter.transform(response);
   } catch (e) {
     if (!DEBUG) {
       try {

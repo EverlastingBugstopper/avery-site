@@ -1,6 +1,6 @@
 class MegaMillionsElementHandler {
   constructor(lottoStrings) {
-    this.lottoStrings = lottoStrings
+    this.lottoStrings = lottoStrings;
   }
 
   element(element) {
@@ -10,4 +10,20 @@ class MegaMillionsElementHandler {
   }
 }
 
-export { MegaMillionsElementHandler };
+class CopyStringRewriter {
+  constructor(lottoStrings) {
+    this.lottoStrings = "";
+    for (let i = 0; i < lottoStrings.length; i++) {
+      this.lottoStrings += lottoStrings[i];
+      if (i < lottoStrings.length - 1) {
+        this.lottoStrings += " ";
+      }
+    }
+  }
+
+  element(element) {
+    element.setInnerContent(this.lottoStrings);
+  }
+}
+
+export { CopyStringRewriter, MegaMillionsElementHandler };

@@ -86,7 +86,7 @@ function modules() {
 // CSS task
 function css() {
   return gulp
-    .src("./public/scss/**/*.scss")
+    .src("./scss/**/*.scss")
     .pipe(plumber())
     .pipe(
       sass({
@@ -137,7 +137,7 @@ function js() {
 
 // Watch files
 function watchFiles() {
-  gulp.watch("./public/scss/**/*", css);
+  gulp.watch("./scss/**/*", css);
   gulp.watch(["./public/js/**/*", "!./public/js/**/*.min.js"], js);
   gulp.watch("./**/*.html", browserSyncReload);
 }
