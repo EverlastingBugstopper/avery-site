@@ -22,7 +22,7 @@ class CopyStringRewriter {
   }
 
   element(element) {
-    element.setAttribute("value", this.lottoStrings);
+    element.setInnerContent(this.lottoStrings);
   }
 }
 

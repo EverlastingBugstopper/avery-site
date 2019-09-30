@@ -38,12 +38,16 @@ h2 {
   font-size: 3.5rem;
 }
 
+a {
+  line-height: 1.5rem;
+  padding: 0.25rem;
+}
+
 a:hover {
+  text-shadow: 2px 2px #343a40;
   color: #fff !important;
   background-color: #f16334 !important;
   text-decoration: none;
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
 }
 
 h3 {
@@ -62,7 +66,6 @@ p.lead {
   font-size: 1.5rem;
 }
 
-.social-icons a,
 .social-icons span {
   display: inline-block;
   height: 3.5rem;
@@ -70,20 +73,23 @@ p.lead {
   color: #343a40 !important;
   border-radius: 100%;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 200%;
   line-height: 3.5rem;
-  margin-right: 1rem;
+  margin: auto;
 }
 
-.social-icons a:last-child,
 .social-icons span:last-child {
   margin-right: 0;
 }
 
-.social-icons a:hover,
 .social-icons span:hover {
-  background-color: #f16334;
+  text-shadow: 2px 2px #343a40 !important;
+  background-color: #f16334 !important;
   color: white !important;
+}
+
+.social-icons span a {
+  all: inherit;
 }
 
 .dev-icons {
