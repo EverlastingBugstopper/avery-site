@@ -16,7 +16,6 @@ let _checkRand = (rand, arr, low, high) => {
 };
 
 let lottoGenerator = async () => {
-  console.log("enterint lotto generator")
   let arr = [];
   let randPos = 0;
   let rand = await _getRandom();
