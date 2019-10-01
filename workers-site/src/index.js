@@ -15,7 +15,7 @@ import { lottoFormatter, lottoGenerator } from "./megamillions/lotto";
  * 2. we will return an error message on exception in your Response rather
  *    than the default 404.html page.
  */
-const DEBUG = true;
+const DEBUG = false;
 
 addEventListener("fetch", event => {
   try {
@@ -35,7 +35,9 @@ addEventListener("fetch", event => {
 async function handleEvent(event) {
   const url = new URL(event.request.url);
   let options = {
-    browserTTL: 2 * 60 * 60 // 2 hours
+    cacheControl: {
+      browserTTL: 2 * 60 * 60 // 2 hours
+    }
   };
 
   try {
