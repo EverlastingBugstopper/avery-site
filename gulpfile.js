@@ -46,7 +46,7 @@ function browserSyncReload(done) {
 
 // Clean vendor
 function clean() {
-  return del(["./public/vendor/"]);
+  return del(["./public/resources/vendor/"]);
 }
 
 // Bring third party dependencies from node_modules into vendor directory
@@ -54,26 +54,26 @@ function modules() {
   // Bootstrap
   var bootstrap = gulp
     .src("./node_modules/bootstrap/dist/**/*")
-    .pipe(gulp.dest("./public/vendor/bootstrap"));
+    .pipe(gulp.dest("./public/resources/vendor/bootstrap"));
   // Font Awesome CSS
   var fontAwesomeCSS = gulp
     .src("./node_modules/@fortawesome/fontawesome-free/css/**/*")
-    .pipe(gulp.dest("./public/vendor/fontawesome-free/css"));
+    .pipe(gulp.dest("./public/resources/vendor/fontawesome-free/css"));
   // Font Awesome Webfonts
   var fontAwesomeWebfonts = gulp
     .src("./node_modules/@fortawesome/fontawesome-free/webfonts/**/*")
-    .pipe(gulp.dest("./public/vendor/fontawesome-free/webfonts"));
+    .pipe(gulp.dest("./public/resources/vendor/fontawesome-free/webfonts"));
   // jQuery Easing
   var jqueryEasing = gulp
     .src("./node_modules/jquery.easing/*.js")
-    .pipe(gulp.dest("./public/vendor/jquery-easing"));
+    .pipe(gulp.dest("./public/resources/vendor/jquery-easing"));
   // jQuery
   var jquery = gulp
     .src([
       "./node_modules/jquery/dist/*",
       "!./node_modules/jquery/dist/core.js"
     ])
-    .pipe(gulp.dest("./public/vendor/jquery"));
+    .pipe(gulp.dest("./public/resources/vendor/jquery"));
   return merge(
     bootstrap,
     fontAwesomeCSS,
@@ -105,21 +105,21 @@ function css() {
         pkg: pkg
       })
     )
-    .pipe(gulp.dest("./public/css"))
+    .pipe(gulp.dest("./public/resources/css"))
     .pipe(
       rename({
         suffix: ".min"
       })
     )
     .pipe(cleanCSS())
-    .pipe(gulp.dest("./public/css"))
+    .pipe(gulp.dest("./public/resources/css"))
     .pipe(browsersync.stream());
 }
 
 // JS task
 function js() {
   return gulp
-    .src(["./public/js/*.js", "!./public/js/*.min.js"])
+    .src(["./public/resources/js/*.js", "!./public/resources/js/*.min.js"])
     .pipe(uglify())
     .pipe(
       header(banner, {
@@ -131,14 +131,17 @@ function js() {
         suffix: ".min"
       })
     )
-    .pipe(gulp.dest("./public/js"))
+    .pipe(gulp.dest("./public/resources/js"))
     .pipe(browsersync.stream());
 }
 
 // Watch files
 function watchFiles() {
   gulp.watch("./scss/**/*", css);
-  gulp.watch(["./public/js/**/*", "!./public/js/**/*.min.js"], js);
+  gulp.watch(
+    ["./public/resources/js/**/*", "!./public/resources/js/**/*.min.js"],
+    js
+  );
   gulp.watch("./**/*.html", browserSyncReload);
 }
 

@@ -100,10 +100,6 @@ p.lead {
   color: #f16334;
 }
 
-.dark {
-  color: #343a40 !important;
-}
-
 #sideNav .navbar-nav .nav-item .nav-link {
   font-weight: 800;
   letter-spacing: 0.05rem;
