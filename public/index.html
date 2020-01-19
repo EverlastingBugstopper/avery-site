@@ -42,7 +42,7 @@
         <span class="d-none d-lg-block">
           <img
             class="img-fluid img-profile rounded-square mx-auto mb-2"
-            src="resources/img/profile.jpg"
+            src="resources/img/profile.webp"
             alt="Picture of Avery wearing Sam Rhea's Stetson"
             />
         </span>
@@ -108,12 +108,12 @@
           <div class="social-icons py-4"">
             <span>
               <a href="https://github.com/EverlastingBugstopper">
-                <i class="fab fa-github"></i>
+                <i title="Github" class="fab fa-github"></i>
               </a>
             </span>
             <span>
               <a href="https://twitter.com/SmoothAsSkippy">
-                <i class="fab fa-twitter"></i>
+                <i title="Twitter" class="fab fa-twitter"></i>
               </a>
             </span>
           </div>
@@ -134,7 +134,8 @@
               />
           </h2>
           <div
-            style="display: flex; align-items: center; justify-content: center;"
+            style="display: flex; align-items: center; justify-content:
+            center;"
             class="pt-3 mt-5 pb-2">
             <div
               style="width: auto; display: flex; justify-content:
@@ -147,8 +148,10 @@
               <strong mega-millions class="px-2" id="mm-5">$$</strong>
             </div>
           </div>
-          <textarea style="height: 0; width: 0; opacity: 0;" id="nums-to-copy">$$
-            $$ $$ $$ $$ $$</textarea>
+          <label style="display: none;">Hidden field used to copy lottery
+            numbers to the clipboard<textarea
+              style="height: 0; width: 0; opacity: 0;" id="nums-to-copy">$$
+              $$ $$ $$ $$ $$</textarea></label>
           <div class="social-icons pb-4">
             <span onclick="copy()">
               <i class="fa fa-copy mx-2"></i>
