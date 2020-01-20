@@ -1,7 +1,7 @@
 const ONE_SECOND = 1000;
 
 let IMAGE_SOURCE = "/resources/img/clarktime/0/0.webp";
-const imageTemplate = `<img id="clarktime" alt="Clark Datetime" class="image" src="{{IMAGE_SOURCE}}"><div class="overlay" id="localtime"></div>`;
+const imageTemplate = `<img alt="Clark Time" class="image" src="{{IMAGE_SOURCE}}"><div class="overlay" id="localtime"></div>`;
 
 function updateDisplay(startDate) {
   let currentMinute = startDate.getMinutes();

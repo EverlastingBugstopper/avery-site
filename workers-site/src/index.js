@@ -15,7 +15,7 @@ import { lottoFormatter, lottoGenerator } from "./megamillions/lotto";
  * 2. we will return an error message on exception in your Response rather
  *    than the default 404.html page.
  */
-const DEBUG = false;
+const DEBUG = true;
 
 addEventListener("fetch", event => {
   try {
@@ -32,13 +32,24 @@ addEventListener("fetch", event => {
   }
 });
 
+function getBrowserTTL(url) {
+  const ONE_MINUTE = 60;
+  const ONE_HOUR = ONE_MINUTE * 60;
+  const ONE_DAY = ONE_HOUR * 24;
+  const ONE_MONTH = ONE_DAY * 30;
+  if (url.pathname.includes("resources/img/clarktime")) {
+    return ONE_MONTH;
+  }
+  return ONE_DAY;
+}
+
 async function handleEvent(event) {
   const url = new URL(event.request.url);
+  let cacheControl = { browserTTL: getBrowserTTL(url) };
   let options = {
-    cacheControl: {
-      browserTTL: 2 * 60 * 60 // 2 hours
-    }
+    cacheControl
   };
+
   if (DEBUG) {
     options.cacheControl = {
       bypassCache: true
@@ -63,7 +74,7 @@ async function handleEvent(event) {
     if (!DEBUG) {
       let notFoundResponse = await getAssetFromKV(event, {
         mapRequestToAsset: req =>
-          new Request(`${new URL(req.url).origin}/html/404.html`, req)
+          new Request(`${new URL(req.url).origin}/resources/html/404.html`, req)
       });
 
       return new Response(notFoundResponse.body, {
