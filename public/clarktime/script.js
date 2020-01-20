@@ -20,7 +20,7 @@ function updateDisplay(startDate) {
 function updateImage(hour, minute) {
   document.getElementById("clarktime").innerHTML = imageTemplate.replace(
     "{{IMAGE_SOURCE}}",
-    `/resources/img/clarktime/${(hour % 12) - 1}/${minute - 1}.webp`
+    `/resources/img/clarktime/${hour % 12}/${minute - 1}.webp`
   );
 }
 
