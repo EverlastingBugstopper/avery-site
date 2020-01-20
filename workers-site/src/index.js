@@ -39,13 +39,13 @@ async function handleEvent(event) {
       browserTTL: 2 * 60 * 60 // 2 hours
     }
   };
+  if (DEBUG) {
+    options.cacheControl = {
+      bypassCache: true
+    };
+  }
 
   try {
-    if (DEBUG) {
-      options.cacheControl = {
-        bypassCache: true
-      };
-    }
     let response = await getAssetFromKV(event, options);
     const lottoNums = await lottoGenerator();
     const lottoStrings = lottoFormatter(lottoNums);
@@ -61,17 +61,15 @@ async function handleEvent(event) {
     return copyStringRewriter.transform(response);
   } catch (e) {
     if (!DEBUG) {
-      try {
-        let notFoundResponse = await getAssetFromKV(event, {
-          mapRequestToAsset: req =>
-            new Request(`${new URL(req.url).origin}/html/404.html`, req)
-        });
+      let notFoundResponse = await getAssetFromKV(event, {
+        mapRequestToAsset: req =>
+          new Request(`${new URL(req.url).origin}/html/404.html`, req)
+      });
 
-        return new Response(notFoundResponse.body, {
-          ...notFoundResponse,
-          status: 404
-        });
-      } catch (e) {}
+      return new Response(notFoundResponse.body, {
+        ...notFoundResponse,
+        status: 404
+      });
     }
 
     return new Response(e.message || e.toString(), { status: 500 });

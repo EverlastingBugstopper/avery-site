@@ -3,6 +3,10 @@ name = "www"
 type = "webpack"
 workers_dev = true
 
+[env.clarktime-dev]
+name = "clarktime"
+workers_dev = true
+
 [site]
 bucket = "./public"
 entry-point = "workers-site"
