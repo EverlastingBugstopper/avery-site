@@ -1,10 +1,9 @@
 # Avery's Personal Site
 
-[![Lighthouse Accessibility Badge](https://raw.githubusercontent.com/EverlastingBugstopper/avery-site/master/lighthouse/lighthouse_accessibility.svg)](https://github.com/EverlastingBugstopper/avery-site)
-[![Lighthouse Best Practices Badge](https://raw.githubusercontent.com/EverlastingBugstopper/avery-site/master/lighthouse/lighthouse_best-practices.svg)](https://github.com/EverlastingBugstopper/avery-site)
-[![Lighthouse Performance Badge](https://raw.githubusercontent.com/EverlastingBugstopper/avery-site/master/lighthouse/lighthouse_performance.svg)](https://github.com/EverlastingBugstopper/avery-site)
-[![Lighthouse PWA Badge](https://raw.githubusercontent.com/EverlastingBugstopper/avery-site/master/lighthouse/lighthouse_pwa.svg)](https://github.com/EverlastingBugstopper/avery-site)
-[![Lighthouse SEO Badge](https://raw.githubusercontent.com/EverlastingBugstopper/avery-site/master/lighthouse/lighthouse_seo.svg)](https://github.com/EverlastingBugstopper/avery-site)
+[![Lighthouse Accessibility Badge](/lighthouse/lighthouse_accessibility.svg)](https://github.com/EverlastingBugstopper/avery-site)
+[![Lighthouse Best Practices Badge](/lighthouse/lighthouse_best-practices.svg)](https://github.com/EverlastingBugstopper/avery-site)
+[![Lighthouse Performance Badge](/lighthouse/lighthouse_performance.svg)](https://github.com/EverlastingBugstopper/avery-site)
+[![Lighthouse SEO Badge](/lighthouse/lighthouse_seo.svg)](https://github.com/EverlastingBugstopper/avery-site)
 
 This site runs on
 [Workers Sites](https://developers.cloudflare.com/workers/sites) and has a small
