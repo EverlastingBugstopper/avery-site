@@ -15,7 +15,11 @@ import { lottoFormatter, lottoGenerator } from "./megamillions/lotto";
  * 2. we will return an error message on exception in your Response rather
  *    than the default 404.html page.
  */
-const DEBUG = false;
+let DEBUG = false;
+
+if (typeof DEBUG_FLAG !== "undefined") {
+  DEBUG = true
+}
 
 addEventListener("fetch", event => {
   try {
@@ -44,19 +48,26 @@ function getBrowserTTL(url) {
 }
 
 async function handleEvent(event) {
-  const url = new URL(event.request.url);
-  let cacheControl = { browserTTL: getBrowserTTL(url) };
-  let options = {
-    cacheControl
-  };
-
-  if (DEBUG) {
-    options.cacheControl = {
-      bypassCache: true
-    };
-  }
-
   try {
+    const url = new URL(event.request.url);
+    console.log({"hello": "world", "is it": "me", "you're looking": 4})
+    if (url.host.includes("averyharnish.com")) {
+      if (url.pathname === "/" || url.pathname.includes("clarktime")) {
+        console.log(JSON.stringify(event.request.cf))
+      } else if (url.pathname.includes("error")) {
+        throw new Error("You visited a route with \"error\"")
+      }
+    }
+    let cacheControl = { browserTTL: getBrowserTTL(url) };
+    let options = {
+      cacheControl
+    };
+
+    if (DEBUG) {
+      options.cacheControl = {
+        bypassCache: true
+      };
+    }
     let response = await getAssetFromKV(event, options);
     const lottoNums = await lottoGenerator();
     const lottoStrings = lottoFormatter(lottoNums);
@@ -71,18 +82,21 @@ async function handleEvent(event) {
     response = await megaMillionsRewriter.transform(response);
     return copyStringRewriter.transform(response);
   } catch (e) {
+    if (!e.status) {
+      e.status = 500
+    }
     if (!DEBUG) {
-      let notFoundResponse = await getAssetFromKV(event, {
+      let error_response = await getAssetFromKV(event, {
         mapRequestToAsset: req =>
-          new Request(`${new URL(req.url).origin}/resources/html/404.html`, req)
+          new Request(`${new URL(req.url).origin}/resources/html/${e.status}.html`, req)
       });
 
-      return new Response(notFoundResponse.body, {
-        ...notFoundResponse,
-        status: 404
+      return new Response(error_response.body, {
+        ...error_response,
+        status: e.status
       });
     }
 
-    return new Response(e.message || e.toString(), { status: 500 });
+    return new Response(e.message || e.toString(), { status: e.status });
   }
 }
