@@ -8,6 +8,10 @@ workers_dev = true
 name = "dev"
 vars = { DEBUG_FLAG = "on" }
 
+[env.test]
+name = "worker"
+route = "averyharnish.com/test"
+
 # staging.averyharnish.com
 [env.staging]
 route = "staging.averyharnish.com/*"

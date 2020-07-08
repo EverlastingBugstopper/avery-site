@@ -50,14 +50,15 @@ function getBrowserTTL(url) {
 async function handleEvent(event) {
   try {
     const url = new URL(event.request.url);
-    console.log({"hello": "world", "is it": "me", "you're looking": 4})
-    if (url.host.includes("averyharnish.com")) {
-      if (url.pathname === "/" || url.pathname.includes("clarktime")) {
-        console.log(JSON.stringify(event.request.cf))
-      } else if (url.pathname.includes("error")) {
-        throw new Error("You visited a route with \"error\"")
-      }
-    }
+    // uncomment to test wrangler dev and wrangler tail :)
+    // console.log({"hello": "world", "is it": "me", "you're looking": 4})
+    // if (url.host.includes("averyharnish.com")) {
+    //   if (url.pathname === "/" || url.pathname.includes("clarktime")) {
+    //     console.log(JSON.stringify(event.request.cf))
+    //   } else if (url.pathname.includes("error")) {
+    //     throw new Error("You visited a route with \"error\"")
+    //   }
+    // }
     let cacheControl = { browserTTL: getBrowserTTL(url) };
     let options = {
       cacheControl
