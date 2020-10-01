@@ -3,7 +3,8 @@
   "name": "startbootstrap-resume",
   "version": "5.0.8",
   "scripts": {
-    "start": "node_modules/.bin/gulp watch"
+    "start": "node_modules/.bin/gulp watch",
+    "build": "node_modules/.bin/gulp build"
   },
   "description": "Resume is a simple, yet elegant resume and CV theme for Bootstrap 4.",
   "keywords": [
@@ -29,8 +30,8 @@
     "url": "https://github.com/BlackrockDigital/startbootstrap-resume.git"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.13.0",
-    "bootstrap": "^4.4.1",
+    "@fortawesome/fontawesome-free": "^5.15.0",
+    "bootstrap": "^4.5.2",
     "jquery": "3.5.0",
     "jquery.easing": "^1.4.1"
   },
