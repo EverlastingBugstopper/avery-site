@@ -6,8 +6,8 @@
 [![Lighthouse SEO Badge](/lighthouse/lighthouse_seo.svg)](https://github.com/EverlastingBugstopper/avery-site)
 
 This site runs on
-[Workers Sites](https://developers.cloudflare.com/workers/sites) and has a small
-personal bio in addition to a lottery number generator. I might add some more
+[Vercel](https://vercel.com) and has a small
+personal bio. I might add some more
 stuff over time but I don't code that much outside of work.
 
 ## ClarkTime
@@ -15,5 +15,5 @@ stuff over time but I don't code that much outside of work.
 [Clark Addis](clarkaddis.com) is a good friend of mine and a while back he made
 [ClarkTime](clarkaddis.com/get_hour) as an art project. I wanted to learn a bit
 about `cwebp` and `parallel`, and he took ~43,200 pictures for this project so I
-decided to port it to Workers Sites just for funsies. This lives at
+decided to port it to my site just for funsies. This lives at
 [averyharnish.com/clarktime](https://averyharnish.com/clarktime).
