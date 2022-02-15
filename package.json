@@ -3,8 +3,7 @@
   "name": "avery-site",
   "version": "1.0.0",
   "scripts": {
-    "start": "vercel dev",
-    "build": "echo 'no build, only serve'"
+    "start": "vercel dev"
   },
   "description": "Avery's personal site",
   "homepage": "https://averyharnish.com",
