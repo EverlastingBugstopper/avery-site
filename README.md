@@ -9,11 +9,3 @@ This site runs on
 [Vercel](https://vercel.com) and has a small
 personal bio. I might add some more
 stuff over time but I don't code that much outside of work.
-
-## ClarkTime
-
-[Clark Addis](clarkaddis.com) is a good friend of mine and a while back he made
-[ClarkTime](clarkaddis.com/get_hour) as an art project. I wanted to learn a bit
-about `cwebp` and `parallel`, and he took ~43,200 pictures for this project so I
-decided to port it to my site just for funsies. This lives at
-[averyharnish.com/clarktime](https://averyharnish.com/clarktime).
