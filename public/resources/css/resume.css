@@ -18,6 +18,15 @@ body {
   }
 }
 
+@media (min-width: 768px) {
+  section.bio {
+    min-height: 100vh;
+  }
+  section.bio {
+    min-width: 18rem;
+  }
+}
+
 h1,
 h2,
 h3,
