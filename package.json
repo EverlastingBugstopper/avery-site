@@ -17,7 +17,7 @@
     "url": "https://github.com/EverlastingBugstopper/avery-site.git"
   },
   "devDependencies": {
-    "vercel": "^22.0.1"
+    "vercel": "^24.2.0"
   },
   "volta": {
     "node": "16.14.0"
