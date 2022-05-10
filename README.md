@@ -7,5 +7,11 @@
 
 This site runs on
 [Vercel](https://vercel.com) and has a small
-personal bio. I might add some more
-stuff over time but I don't code that much outside of work.
+personal bio.
+
+## Development
+
+1) Install node (I like [volta](https://volta.sh)).
+1) Run `git clone https://github.com/EverlastingBugstopper/avery-site; cd avery-site`
+1) Run `npm i; npm run start`
+1) Your browser should open automatically and reload on any changes made to assets in the `public` directory

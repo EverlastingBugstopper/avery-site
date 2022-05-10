@@ -3,7 +3,7 @@
   "name": "avery-site",
   "version": "1.0.0",
   "scripts": {
-    "start": "vercel dev"
+    "start": "browser-sync start -s public -f public"
   },
   "description": "Avery's personal site",
   "homepage": "https://averyharnish.com",
@@ -17,7 +17,7 @@
     "url": "https://github.com/EverlastingBugstopper/avery-site.git"
   },
   "devDependencies": {
-    "vercel": "^24.2.0"
+    "browser-sync": "^2.27.9"
   },
   "volta": {
     "node": "16.14.0"
