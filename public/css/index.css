@@ -24,19 +24,19 @@
 }
 
 /* text styling */
-body {
-  font-family: 'Muli', sans-serif;
-  color: var(--main-font-color);
-  font-size: 1.5rem;
-  line-height: 3rem;
-}
-
 h1 {
   font-family: 'Royal Acidbath Outline', serif;
   color: var(--main-font-color);
   font-weight: 600;
   font-size: 6rem;
   line-height: 5.5rem;
+}
+
+content {
+  font-family: 'Muli', sans-serif;
+  color: var(--main-font-color);
+  font-size: 1.5rem;
+  line-height: 3rem;
 }
 
 firstname {
@@ -69,20 +69,39 @@ a:hover, a:focus, a:active {
 }
 
 /* layout */
+html {
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: table;
+}
+
 body {
-  padding: 4rem;
+  padding-left: 20%;
+  padding-right: 20%;
+  height: 100%;
+  vertical-align: middle;
+  display: table-cell;
 }
 
 a {
   padding: 0.25rem;
 }
 
-@media only screen and (max-width:900px) {
-  emoji {
-    display: none;
+@media only screen and (min-width:1600px) {
+  body .content {
+    padding-left: 50%;
+    padding-right: 50%;
   }
+}
 
-  body {
-    padding: 1.5rem;
+
+@media only screen and (max-width:900px) {
+  body .content {
+    display: table-cell;
+    padding-left: 10%;
+    padding-right: 10%;
   }
 }
