@@ -1,0 +1,88 @@
+/* theme colors */
+:root {
+  --primary-bg-color: #fff;
+  --secondary-bg-color: #6610f2;
+  --highlighted-color: #4709ac;
+  --main-font-color: #343a40;
+  --secondary-font-color: var(--secondary-bg-color);
+  --sidebar-width: 100px;
+}
+
+/* font imports */
+@font-face {
+  font-family: 'Royal Acidbath Outline';
+  src: url('../fonts/royal_acid_o.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/muli.ttf') format('truetype');
+}
+
+/* text styling */
+body {
+  font-family: 'Muli', sans-serif;
+  color: var(--main-font-color);
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+
+h1 {
+  font-family: 'Royal Acidbath Outline', serif;
+  color: var(--main-font-color);
+  font-weight: 600;
+  font-size: 6rem;
+  line-height: 5.5rem;
+}
+
+firstname {
+  color: var(--main-font-color)
+}
+
+lastname {
+  color: var(--secondary-font-color)
+}
+
+h1 span {
+  color: var(--secondary-font-color)
+}
+
+a {
+  line-height: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--secondary-bg-color);
+}
+
+a:hover {
+  text-shadow: 2px 2px var(--main-font-color);
+  color: var(--primary-bg-color) !important;
+  background-color: var(--secondary-bg-color) !important;
+}
+
+a:hover, a:focus, a:active {
+  color: var(--highlighted-color);
+}
+
+/* layout */
+body {
+  padding: 4rem;
+}
+
+a {
+  padding: 0.25rem;
+}
+
+@media only screen and (max-width:900px) {
+  emoji {
+    display: none;
+  }
+
+  body {
+    padding: 1.5rem;
+  }
+}
