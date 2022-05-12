@@ -5,11 +5,10 @@ jobs:
     steps:
       - name: Get Vercel preview URL
         shell: bash
-        run: BRANCH=${GITHUB_REF/refs\/heads\//}; echo ::set-env name=VERCEL_URL::avery-site-git-${BRANCH/\//-}-averyharnish.vercel.app
-      - name: Print VERCEL_URL
-        run: echo ${VERCEL_URL}
+        run: BRANCH=${GITHUB_REF/refs\/heads\//}; echo ::set-output name=VERCEL_URL::avery-site-git-${BRANCH/\//-}-averyharnish.vercel.app
+        id: vercel
       - name: Lighthouse Audit
         uses: foo-software/lighthouse-check-action@v8.0.1
         with:
-          urls: '${VERCEL_URL}'
+          urls: ${{ steps.vercel.outputs.VERCEL_URL }}
           prCommentEnabled: true
