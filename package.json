@@ -9,9 +9,6 @@
   "homepage": "https://averyharnish.com",
   "license": "MIT",
   "author": "Avery Harnish <averyharnish@gmail.com>",
-  "contributors": [
-    "David Miller (http://davidmiller.io/)"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/EverlastingBugstopper/avery-site.git"
