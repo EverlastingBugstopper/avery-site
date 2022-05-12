@@ -4,7 +4,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get Vercel preview URL
-        run: echo ::set-env name=VERCEL_URL::avery-site-git-${${GITHUB_REF/refs\/heads\//}//\//-}-averyharnish.vercel.app
+        shell: bash
+        run: BRANCH=${GITHUB_REF/refs\/heads\//}; echo ::set-env name=VERCEL_URL::avery-site-git-${BRANCH/\//-}-averyharnish.vercel.app
       - name: Print VERCEL_URL
         run: echo ${VERCEL_URL}
       - name: Lighthouse Audit
