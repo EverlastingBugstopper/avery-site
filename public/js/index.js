@@ -24,6 +24,7 @@ const getEmojiHandle = () => {
 
 setInterval(() => {
   const emojiHandle = getEmojiHandle();
+  emojiHandle.innerHTML = "";
   emojiHandle.innerHTML = emojis[emojiIndex];
   if (emojiIndex == emojis.length - 1) {
     emojiIndex = 0;
