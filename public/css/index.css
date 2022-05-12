@@ -71,21 +71,17 @@ a {
   padding: 0.25rem;
 }
 
-/* phones, scroll view */
-@media only screen and (max-width: 900px) {
-  h1 {
-    text-align: center;
-  }
-  body {
-    display: block;
-    padding-left: 10%;
-    padding-right: 10%;
-    overflow: visible;
-  }
+body {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+h1 {
+  text-align: center;
 }
 
 /* not phones, center vertically */
-@media only screen and (min-width: 901px) {
+@media only screen and (min-width: 900px) and (min-height: 650px) {
   html {
     height: 100vh;
     width: 100%;
@@ -95,12 +91,17 @@ a {
   }
 
   body {
-    padding-left: 20%;
-    padding-right: 20%;
     height: 100%;
     vertical-align: middle;
     display: table-cell;
     overflow: hidden;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  body {
+    padding-left: 20%;
+    padding-right: 20%;
   }
 }
 
