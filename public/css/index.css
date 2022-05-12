@@ -10,22 +10,22 @@
 
 /* font imports */
 @font-face {
-  font-family: 'Royal Acidbath Outline';
-  src: url('../fonts/royal_acid_o.ttf') format('truetype');
+  font-family: "Royal Acidbath Outline";
+  src: url("../fonts/royal_acid_o.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Muli';
+  font-family: "Muli";
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/muli.ttf') format('truetype');
+  src: url("../fonts/muli.ttf") format("truetype");
 }
 
 /* text styling */
 h1 {
-  font-family: 'Royal Acidbath Outline', serif;
+  font-family: "Royal Acidbath Outline", serif;
   color: var(--main-font-color);
   font-weight: 600;
   font-size: 6rem;
@@ -33,22 +33,18 @@ h1 {
 }
 
 content {
-  font-family: 'Muli', sans-serif;
+  font-family: "Muli", sans-serif;
   color: var(--main-font-color);
   font-size: 1.5rem;
   line-height: 3rem;
 }
 
 firstname {
-  color: var(--main-font-color)
+  color: var(--main-font-color);
 }
 
 lastname {
-  color: var(--secondary-font-color)
-}
-
-h1 span {
-  color: var(--secondary-font-color)
+  color: var(--secondary-font-color);
 }
 
 a {
@@ -64,45 +60,54 @@ a:hover {
   background-color: var(--secondary-bg-color) !important;
 }
 
-a:hover, a:focus, a:active {
+a:hover,
+a:focus,
+a:active {
   color: var(--highlighted-color);
 }
 
 /* layout */
-html {
-  height: 100vh;
-  width: 100%;
-  box-sizing: border-box;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  display: table;
-}
-
-body {
-  padding-left: 20%;
-  padding-right: 20%;
-  height: 100%;
-  vertical-align: middle;
-  display: table-cell;
-  overflow: hidden;
-}
-
 a {
   padding: 0.25rem;
 }
 
-@media only screen and (min-width:1600px) {
-  body .content {
-    padding-left: 50%;
-    padding-right: 50%;
+/* phones, scroll view */
+@media only screen and (max-width: 900px) {
+  h1 {
+    text-align: center;
+  }
+  body {
+    display: block;
+    padding-left: 10%;
+    padding-right: 10%;
+    overflow: visible;
   }
 }
 
+/* not phones, center vertically */
+@media only screen and (min-width: 901px) {
+  html {
+    height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: table;
+  }
 
-@media only screen and (max-width:900px) {
-  body .content {
+  body {
+    padding-left: 20%;
+    padding-right: 20%;
+    height: 100%;
+    vertical-align: middle;
     display: table-cell;
-    padding-left: 10%;
-    padding-right: 10%;
+    overflow: hidden;
+  }
+}
+
+/* big screens, extra padding */
+@media only screen and (min-width: 1600px) {
+  body .content {
+    padding-left: 50%;
+    padding-right: 50%;
   }
 }

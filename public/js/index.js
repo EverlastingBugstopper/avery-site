@@ -1,21 +1,33 @@
-const emojis = ["😁","🤔","🤯","🙄","🤩","😏","😎","😷","🙃","😐","😌"]
+const emojis = [
+  "😁",
+  "🤔",
+  "🤯",
+  "🙄",
+  "🤩",
+  "😏",
+  "😎",
+  "😷",
+  "🙃",
+  "😐",
+  "😌",
+];
 let emojiIndex = 0;
 
 let emojiHandle;
 
 const getEmojiHandle = () => {
   if (!emojiHandle) {
-    emojiHandle = document.getElementById("emoji")
+    emojiHandle = document.getElementById("emoji");
   }
-  return emojiHandle
-}
+  return emojiHandle;
+};
 
 setInterval(() => {
-  const emojiHandle = getEmojiHandle()
+  const emojiHandle = getEmojiHandle();
   emojiHandle.innerHTML = emojis[emojiIndex];
-  if (emojiIndex == emojis.length - 1){
-    emojiIndex = 0
+  if (emojiIndex == emojis.length - 1) {
+    emojiIndex = 0;
   } else {
-    emojiIndex += 1
+    emojiIndex += 1;
   }
-},600)
+}, 600);
