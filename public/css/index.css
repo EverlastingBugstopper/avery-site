@@ -23,6 +23,10 @@
   src: url("../fonts/muli.ttf") format("truetype");
 }
 
+html {
+  margin: 1%;
+}
+
 /* text styling */
 h1 {
   font-family: "Royal Acidbath Outline", serif;
