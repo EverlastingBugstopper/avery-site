@@ -12,3 +12,4 @@ jobs:
         with:
           urls: ${{ steps.vercel.outputs.VERCEL_URL }}
           prCommentEnabled: true
+          gitHubAccessToken: ${{ GITHUB_TOKEN }}
