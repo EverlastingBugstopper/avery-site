@@ -1,0 +1,12 @@
+on: [push]
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Vercel deploy
+        run: echo "sleeping for 30 seconds..."; sleep 30
+      - name: Lighthouse Audit
+        uses: foo-software/lighthouse-check-action@v8.0.1
+        with:
+          urls: 'avery-site-git-${${GITHUB_REF/refs\/heads\//}//\//-}-averyharnish.vercel.app'
+          prCommentEnabled: true
