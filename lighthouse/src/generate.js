@@ -2,7 +2,7 @@ const path = require("path");
 const fs = require("fs");
 const { makeBadge } = require("badge-maker");
 const { LIGHTHOUSE_DIR, displayFile, info } = require("./utils.js");
-const { updateFromReport, validateScoresJson } = require("./scores.js");
+const { updateScoresJSONFromReport, validateScoresJSON } = require("./scores.js");
 
 const BADGES_DIR = path.join(LIGHTHOUSE_DIR, "badges");
 try {
@@ -10,10 +10,9 @@ try {
 } catch (e) {
   info(`this is probably fine: ${e}`)
 }
-const changed = updateFromReport();
+const { changed, scores } = updateScoresJSONFromReport();
 
 if (changed) {
-  const scores = validateScoresJson();
   for (const [camelCaseName, score] of Object.entries(scores)) {
     const name = camelCaseName.replace(/([A-Z])/g, " $1").toLowerCase();
     const badgePath = path.join(BADGES_DIR, `${name}.svg`);

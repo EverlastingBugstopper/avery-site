@@ -3,7 +3,7 @@ const fs = require("fs");
 const { actionsOutput, info, error, errorWithCauses, displayFile, LIGHTHOUSE_DIR } = require("./utils.js");
 const SCORES_PATH = path.join(LIGHTHOUSE_DIR, "scores.json");
 
-const validateScoresJson = () => {
+const validateScoresJSON = () => {
   const SCORES_JSON = require(SCORES_PATH);
   const data = SCORES_JSON["data"];
   if (!data) {
@@ -88,7 +88,7 @@ const updateScoresJSON = (accessibility, bestPractices, performance, seo) => {
   let existingScores = {};
   try {
     // this will fail if the file hasn't been created
-    existingScores = validateScoresJson();
+    existingScores = validateScoresJSON();
     info("found existing scores...")
   } catch (_) {
     info("no existing scores detected...")
@@ -104,12 +104,12 @@ const updateScoresJSON = (accessibility, bestPractices, performance, seo) => {
   } else {
     info(`${displayFile(SCORES_PATH)} remains unchanged`)
   }
-  return changed
+  return { changed, scores: data }
 }
 
 module.exports = {
-  updateFromReport: updateScoresJSONFromReport,
-  validateScoresJson,
+  updateScoresJSONFromReport,
+  validateScoresJSON,
   validateData,
   updateScoresJSON
 };
