@@ -5,6 +5,11 @@ const { LIGHTHOUSE_DIR, displayFile, info } = require("./utils.js");
 const { updateFromReport, validateScoresJson } = require("./scores.js");
 
 const BADGES_DIR = path.join(LIGHTHOUSE_DIR, "badges");
+try {
+  fs.mkdirSync(BADGES_DIR);
+} catch (e) {
+  info(`this is probably fine: ${e}`)
+}
 const changed = updateFromReport();
 
 if (changed) {
