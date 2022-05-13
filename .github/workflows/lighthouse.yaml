@@ -20,7 +20,7 @@ jobs:
           urls: ${{ steps.vercel.outputs.url }}
       - name: Transform lighthouse output
         id: lighthouse
-        run: echo {{ steps.lighthouse-raw.outputs.lighthouseCheckResults }} | jq .data[0]; echo ::set-output name=scores:$SCORES
+        run: SCORES=$(echo {{ steps.lighthouse-raw.outputs.lighthouseCheckResults }} | jq .data[0].scores); echo ::set-output name=scores:$SCORES
       - name: Update scores.json
         id: update-scores
         run: echo ${{ steps.lighthouse.outputs.scores }}; node -e 'require("./lighthouse/src/scores.js").update(${{ steps.lighthouse.outputs.scores.accessibility }}, ${{ steps.lighthouse.outputs.scores.bestPractices }}, ${{ steps.lighthouse.outputs.scores.performance }}, ${{ steps.lighthouse.outputs.scores.seo }})'
