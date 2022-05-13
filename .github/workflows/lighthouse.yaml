@@ -34,5 +34,5 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: 'chore: updates lighthouse badges'
-          title: "chore: updates lighthouse badges for '${{ github.head_ref }}' branch"
+          title: "chore: updates lighthouse badges for `${{ steps.git-branch.outputs.name }}`"
           branch: ${{ steps.patch-branch.outputs.name }}
