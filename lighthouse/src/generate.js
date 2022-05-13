@@ -17,10 +17,10 @@ if (changed) {
     const name = camelCaseName.replace(/([A-Z])/g, " $1").toLowerCase();
     const badgePath = path.join(BADGES_DIR, `${camelCaseName}.svg`);
     let color = "red";
-    if (score >= 50) {
+    if (score >= 90) {
+      color = "success"
+    } else if (score >= 50) {
       color = "yellow";
-    } else if (score >= 90) {
-      color = "success";
     }
     const badgeContents = makeBadge({
       label: name,
