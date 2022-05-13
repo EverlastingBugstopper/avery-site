@@ -1,13 +1,21 @@
 # Avery's Personal Site
 
-[![Lighthouse Accessibility Badge](/lighthouse/lighthouse_accessibility.svg)](https://github.com/EverlastingBugstopper/avery-site)
-[![Lighthouse Best Practices Badge](/lighthouse/lighthouse_best-practices.svg)](https://github.com/EverlastingBugstopper/avery-site)
-[![Lighthouse Performance Badge](/lighthouse/lighthouse_performance.svg)](https://github.com/EverlastingBugstopper/avery-site)
-[![Lighthouse SEO Badge](/lighthouse/lighthouse_seo.svg)](https://github.com/EverlastingBugstopper/avery-site)
+This is just a small site with a bit of information about me.
 
-This site runs on
-[Vercel](https://vercel.com) and has a small
-personal bio.
+
+<p align="center">
+  <img src="./lighthouse/logo.png" alt="Lighthouse logo" height="150">
+
+[![Lighthouse Accessibility Badge](/lighthouse/badges/accessibility.svg)](https://github.com/EverlastingBugstopper/avery-site)
+[![Lighthouse Best Practices Badge](/lighthouse/badges/best_practices.svg)](https://github.com/EverlastingBugstopper/avery-site)
+[![Lighthouse Performance Badge](/lighthouse/badges/performance.svg)](https://github.com/EverlastingBugstopper/avery-site)
+[![Lighthouse SEO Badge](/lighthouse/badges/seo.svg)](https://github.com/EverlastingBugstopper/avery-site)
+</p>
+
+This website uses no front end framework of any kind. There is some custom tooling that I wrote for generating the lighthouse badges that you can read about [here](./lighthouse/README.md).
+
+This site is powered by
+[Vercel](https://vercel.com).
 
 ## Development
 

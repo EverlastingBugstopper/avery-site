@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "browser-sync start -s public -f public",
-    "audit": "concurrently 'npm run start' 'lighthouse http://localhost:3000/'"
+    "badges": "node ./lighthouse/src/generate.js"
   },
   "description": "Avery's personal site",
   "homepage": "https://averyharnish.com",
@@ -15,11 +15,10 @@
     "url": "https://github.com/EverlastingBugstopper/avery-site.git"
   },
   "devDependencies": {
-    "@lhci/cli": "^0.9.0",
-    "browser-sync": "^2.27.9",
-    "concurrently": "^7.1.0"
+    "badge-maker": "^3.3.1",
+    "browser-sync": "^2.27.9"
   },
   "volta": {
-    "node": "14.19.2"
+    "node": "18.1.0"
   }
 }

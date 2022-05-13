@@ -1,15 +1,33 @@
 on: [push]
 jobs:
   lighthouse:
+    if: startsWith(github.head_ref, 'lighthouse-patches') == false && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
-      - name: Get Vercel preview URL
-        shell: bash
-        run: BRANCH=${GITHUB_REF/refs\/heads\//}; echo ::set-output name=VERCEL_URL::https://avery-site-git-${BRANCH/\//-}-averyharnish.vercel.app
-        id: vercel
-      - name: Lighthouse Audit
-        uses: foo-software/lighthouse-check-action@v8.0.1
+      - uses: actions/checkout@v3
         with:
-          urls: ${{ steps.vercel.outputs.VERCEL_URL }}
-          prCommentEnabled: true
-          gitHubAccessToken: ${GITHUB_TOKEN}
+          ref: ${{ github.head_ref }}
+      - name: Set lighthouse patch branch name
+        id: patch-branch
+        run: echo ::set-output name=branch-name::"lighthouse-patches/${{ github.head_ref }}"
+      - name: Get Vercel preview URL
+        run: BRANCH=${GITHUB_REF/refs\/heads\//}; echo ::set-output name=url::https://avery-site-git-${BRANCH/\//-}-averyharnish.vercel.app
+        id: vercel
+      - name: Run Lighthouse Audit
+        uses: foo-software/lighthouse-check-action@v8.0.1
+        id: lighthouse
+        with:
+          urls: ${{ steps.vercel.outputs.url }}
+      - name: Update scores.json
+        id: scores
+        run: node -e 'require("./lighthouse/src/scores.js").update(${{ steps.lighthouse.outputs.data.scores.accessibility }}, ${{ steps.lighthouse.outputs.data.scores.bestPractices }}, ${{ steps.lighthouse.outputs.data.scores.performance }}, ${{ steps.lighthouse.outputs.data.scores.seo }})'
+      - name: Update badges
+        if: ${{ steps.scores.outputs.changed }} == "true"
+        run: npm run badges
+      - name: Create PR with Lighthouse results
+        if: ${{ steps.scores.outputs.changed }} == "true"
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: 'chore: updates lighthouse badges'
+          title: "chore: updates lighthouse badges for '${{ github.head_ref }}' branch"
+          branch: ${{ steps.patch-branch.outputs.branch-name }}
