@@ -20,7 +20,7 @@ jobs:
           urls: ${{ steps.vercel.outputs.url }}
       - name: Update scores.json
         id: scores
-        run: echo ${{ steps.lighthouse.outputs }}; node -e 'require("./lighthouse/src/scores.js").update(${{ steps.lighthouse.outputs.data.scores.accessibility }}, ${{ steps.lighthouse.outputs.data.scores.bestPractices }}, ${{ steps.lighthouse.outputs.data.scores.performance }}, ${{ steps.lighthouse.outputs.data.scores.seo }})'
+        run: echo ${{ steps.lighthouse.outputs.lighthouseCheckResults }}; node -e 'require("./lighthouse/src/scores.js").update(${{ steps.lighthouse.outputs.lighthouseCheckResults.scores.accessibility }}, ${{ steps.lighthouse.outputs.lighthouseCheckResults.scores.bestPractices }}, ${{ steps.lighthouse.outputs.lighthouseCheckResults.scores.performance }}, ${{ steps.lighthouse.outputs.lighthouseCheckResults.scores.seo }})'
       - name: Update badges
         if: ${{ steps.scores.outputs.changed }} == "true"
         run: npm run badges
