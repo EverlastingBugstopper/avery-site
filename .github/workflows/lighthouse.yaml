@@ -22,7 +22,7 @@ jobs:
         run: echo '${{ steps.lighthouse.outputs.lighthouseCheckResults }}' > ./lighthouse/report.json
       - name: Generate Lighthouse badges
         id: badges
-        run: npm run badges
+        run: npm i; npm run badges
       - name: Create PR with Lighthouse results
         if: ${{ steps.badges.outputs.changed }} == "true"
         uses: peter-evans/create-pull-request@v4
