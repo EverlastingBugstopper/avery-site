@@ -8,20 +8,15 @@ This is just a small site with a bit of information about me.
 
 🍦 vanilla JS, CSS, and HTML is served fresh from the [`/public`](./public) directory by [Vercel](https://vercel.com) .
 
-## [![Lighthouse Logo](/lighthouse/logo.png)](https://developers.google.com/web/tools/lighthouse) Lighthouse
+## Lighthouse
 
-
-
+[![Lighthouse Logo](/lighthouse/logo.png)](https://developers.google.com/web/tools/lighthouse)
 [![Lighthouse Accessibility Badge](/lighthouse/badges/accessibility.svg)](https://github.com/EverlastingBugstopper/avery-site)
 [![Lighthouse Best Practices Badge](/lighthouse/badges/bestPractices.svg)](https://github.com/EverlastingBugstopper/avery-site)
 [![Lighthouse Performance Badge](/lighthouse/badges/performance.svg)](https://github.com/EverlastingBugstopper/avery-site)
 [![Lighthouse SEO Badge](/lighthouse/badges/seo.svg)](https://github.com/EverlastingBugstopper/avery-site)
 
-
 ---
-
-
-
 
 ## Development
 
