@@ -15,7 +15,7 @@ const { changed, scores } = updateScoresJSONFromReport();
 if (changed) {
   for (const [camelCaseName, score] of Object.entries(scores)) {
     const name = camelCaseName.replace(/([A-Z])/g, " $1").toLowerCase();
-    const badgePath = path.join(BADGES_DIR, `${name}.svg`);
+    const badgePath = path.join(BADGES_DIR, `${camelCaseName}.svg`);
     let color = "red";
     if (score >= 50) {
       color = "yellow";
