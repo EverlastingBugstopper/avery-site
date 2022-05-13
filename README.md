@@ -1,21 +1,27 @@
 # Avery's Personal Site
 
+## Content
+
 This is just a small site with a bit of information about me.
 
+## Technology
 
-<p align="center">
-  <img src="./lighthouse/logo.png" alt="Lighthouse logo" height="150">
+🍦 vanilla JS, CSS, and HTML is served fresh from the [`/public`](./public) directory by [Vercel](https://vercel.com) .
+
+## [![Lighthouse Logo](/lighthouse/logo.png)](https://developers.google.com/web/tools/lighthouse) Lighthouse
+
+
 
 [![Lighthouse Accessibility Badge](/lighthouse/badges/accessibility.svg)](https://github.com/EverlastingBugstopper/avery-site)
 [![Lighthouse Best Practices Badge](/lighthouse/badges/bestPractices.svg)](https://github.com/EverlastingBugstopper/avery-site)
 [![Lighthouse Performance Badge](/lighthouse/badges/performance.svg)](https://github.com/EverlastingBugstopper/avery-site)
 [![Lighthouse SEO Badge](/lighthouse/badges/seo.svg)](https://github.com/EverlastingBugstopper/avery-site)
-</p>
 
-This website uses no front end framework of any kind. There is some custom tooling that I wrote for generating the lighthouse badges that you can read about [here](./lighthouse/README.md).
 
-This site is powered by
-[Vercel](https://vercel.com).
+---
+
+
+
 
 ## Development
 

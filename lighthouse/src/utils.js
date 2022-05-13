@@ -9,12 +9,6 @@ const info = (message) => {
   process.stderr.write(`${message}\n`)
 }
 
-const actionsOutput = (key, value) => {
-  info("------- begin gh actions -------")
-  process.stdout.write(`::set-output name=${key}::${value}\n`)
-  info("-------- end gh actions --------")
-}
-
 const error = (message, causes) => {
   let result;
   if (causes && causes.length > 0) {
@@ -47,6 +41,5 @@ module.exports = {
   errorWithCauses,
   error,
   info,
-  actionsOutput,
   displayFile,
 };
