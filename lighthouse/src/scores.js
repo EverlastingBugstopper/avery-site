@@ -1,20 +1,9 @@
 const path = require("path");
+const fs = require("fs");
 const { actionsOutput, info, error, errorWithCauses, displayFile, LIGHTHOUSE_DIR } = require("./utils.js");
 const SCORES_PATH = path.join(LIGHTHOUSE_DIR, "scores.json");
 
-const validate = () => {
-  const REQUIRED_SCORES = [
-    "accessibility",
-    "best_practices",
-    "performance",
-    "seo",
-  ];
-
-  let missingScores = [];
-  let invalidScores = [];
-  let errors = [];
-
-  info("validating scores...");
+const validateScoresJson = () => {
   const SCORES_JSON = require(SCORES_PATH);
   const data = SCORES_JSON["data"];
   if (!data) {
@@ -25,6 +14,20 @@ const validate = () => {
     );
   }
   info(`validated ${displayFile(SCORES_PATH)} ✅`);
+  return validateData(data)
+}
+
+const validateData = (data) => {
+  const REQUIRED_SCORES = [
+    "accessibility",
+    "bestPractices",
+    "performance",
+    "seo",
+  ];
+
+  let missingScores = [];
+  let invalidScores = [];
+  let errors = [];
 
   for (const name of REQUIRED_SCORES) {
     // make sure we have all the scores that we need
@@ -40,7 +43,7 @@ const validate = () => {
   if (missingScores.length > 0) {
     errors.push(
       errorWithCauses(
-        `The 'data' object in '${displayFile(
+        `the 'data' object in '${displayFile(
           SCORES_PATH
         )}' is missing the following number properties (they must be between 0 and 100)`,
         missingScores
@@ -51,7 +54,7 @@ const validate = () => {
   if (invalidScores.length > 0) {
     errors.push(
       errorWithCauses(
-        `These scores are invalid, they must be between 0 and 100`,
+        `these scores are invalid, they must be between 0 and 100`,
         invalidScores
       )
     );
@@ -59,28 +62,36 @@ const validate = () => {
 
   if (errors.length > 0) {
     throw error(
-      "These errors were encountered while preparing the template substitution",
+      "these errors were encountered while preparing the template substitution",
       errors
     );
   }
+
   return data;
 };
 
-const update = (accessibility, best_practices, performance, seo) => {
-  const fs = require("fs");
-  const data = {
-    accessibility,
-    best_practices,
-    performance,
-    seo,
-  };
+const updateScoresJSONFromReport = () => {
+  const reportPath = path.join(LIGHTHOUSE_DIR, "report.json")
+  info(`reading lighthouse report from ${displayFile(reportPath)}...`)
+  if (!fs.statSync(reportPath).isFile()) {
+    throw error(`${reportPath} is not a file.`)
+  }
+  const reportContents = require(reportPath);
+  info(`read lighthouse report ✅`)
+  info("validating lighthouse report...")
+  const scores = reportContents.data[0].scores;
+  return updateScoresJSON(scores.accessibility, scores.bestPractices, scores.performance, scores.seo)
+};
+
+const updateScoresJSON = (accessibility, bestPractices, performance, seo) => {
+  const data = validateData({ accessibility, bestPractices, performance, seo })
   let existingScores = {};
   try {
     // this will fail if the file hasn't been created
-    existingScores = validate();
+    existingScores = validateScoresJson();
     info("found existing scores...")
   } catch (_) {
-    info("no existing scores...")
+    info("no existing scores detected...")
     // do nothing with the error
   }
   info("checking if the input differs from the existing scores...")
@@ -91,12 +102,14 @@ const update = (accessibility, best_practices, performance, seo) => {
     fs.writeFileSync(SCORES_PATH, JSON.stringify({ data }, null, 2));
     info(`updated ${displayFile(SCORES_PATH)} 🥳🎉🎈`)
   } else {
-    info(`${displayFile(SCORES_PATH)} remains unchanged 🥳🎉🎈`)
+    info(`${displayFile(SCORES_PATH)} remains unchanged`)
   }
-
-};
+  return changed
+}
 
 module.exports = {
-  update,
-  validate,
+  updateFromReport: updateScoresJSONFromReport,
+  validateScoresJson,
+  validateData,
+  updateScoresJSON
 };

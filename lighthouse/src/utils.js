@@ -10,9 +10,9 @@ const info = (message) => {
 }
 
 const actionsOutput = (key, value) => {
-  info("----- BEGIN GH ACTIONS -----")
+  info("------- begin gh actions -------")
   process.stdout.write(`::set-output name=${key}::${value}\n`)
-  info("------ END GH ACTIONS ------")
+  info("-------- end gh actions --------")
 }
 
 const error = (message, causes) => {

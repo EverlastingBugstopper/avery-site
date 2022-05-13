@@ -14,7 +14,7 @@ Currently I can't use the official lighthouse CLI because it doesn't work on my 
 {
   "data": {
     "accessibility": 100,
-    "best_practices": 100,
+    "bestPractices": 100,
     "performance": 100,
     "seo": 100
   }

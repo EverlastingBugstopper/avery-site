@@ -1,8 +1,8 @@
 {
   "data": {
     "accessibility": 100,
-    "best_practices": 100,
-    "performance": 100,
-    "seo": 100
+    "bestPractices": 100,
+    "performance": 97,
+    "seo": 92
   }
 }

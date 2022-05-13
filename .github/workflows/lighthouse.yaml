@@ -15,20 +15,16 @@ jobs:
         id: vercel
       - name: Run Lighthouse Audit
         uses: foo-software/lighthouse-check-action@v8.0.1
-        id: lighthouse-raw
+        id: lighthouse
         with:
           urls: ${{ steps.vercel.outputs.url }}
-      - name: Transform lighthouse output
-        id: lighthouse
-        run: SCORES=$(echo '${{ steps.lighthouse-raw.outputs.lighthouseCheckResults }}' | jq '.data[0].scores'); echo ::set-output name=accessibility:$(echo $SCORES | jq .accessibility); echo ::set-output name=bestPractices:$(echo $SCORES | jq .bestPractices); echo ::set-output name=performance:$(echo $SCORES | jq .performance); echo ::set-output name=seo:$(echo $SCORES | jq .seo)
-      - name: Update scores.json
-        id: update-scores
-        run: node -e 'require("./lighthouse/src/scores.js").update(${{ steps.lighthouse.outputs.accessibility }}, ${{ steps.lighthouse.outputs.bestPractices }}, ${{ steps.lighthouse.outputs.performance }}, ${{ steps.lighthouse.outputs.seo }})'
-      - name: Update badges
-        if: ${{ steps.update-scores.outputs.changed }} == "true"
+      - name: Save Lighthouse output to file
+        run: echo '${{ steps.lighthouse.outputs.lighthouseCheckResults }}' > ./lighthouse/report.json
+      - name: Generate Lighthouse badges
+        id: badges
         run: npm run badges
       - name: Create PR with Lighthouse results
-        if: ${{ steps.update-scores.outputs.changed }} == "true"
+        if: ${{ steps.badges.outputs.changed }} == "true"
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: 'chore: updates lighthouse badges'
