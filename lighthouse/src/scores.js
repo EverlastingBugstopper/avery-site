@@ -1,6 +1,6 @@
 const path = require("path");
 const fs = require("fs");
-const { actionsOutput, info, error, errorWithCauses, displayFile, LIGHTHOUSE_DIR } = require("./utils.js");
+const { info, error, errorWithCauses, displayFile, LIGHTHOUSE_DIR } = require("./utils.js");
 const SCORES_PATH = path.join(LIGHTHOUSE_DIR, "scores.json");
 
 const validateScoresJSON = () => {
@@ -94,17 +94,10 @@ const updateScoresJSON = (accessibility, bestPractices, performance, seo) => {
     info("no existing scores detected...")
     // do nothing with the error
   }
-  info("checking if the input differs from the existing scores...")
-  const changed = (JSON.stringify(data) != JSON.stringify(existingScores));
-  actionsOutput("changed", changed)
-  if (changed) {
-    info(`writing new scores to ${displayFile(SCORES_PATH)}...`)
-    fs.writeFileSync(SCORES_PATH, JSON.stringify({ data }, null, 2));
-    info(`updated ${displayFile(SCORES_PATH)} 🥳🎉🎈`)
-  } else {
-    info(`${displayFile(SCORES_PATH)} remains unchanged`)
-  }
-  return { changed, scores: data }
+  info(`writing new scores to ${displayFile(SCORES_PATH)}...`)
+  fs.writeFileSync(SCORES_PATH, JSON.stringify({ data }, null, 2));
+  info(`updated ${displayFile(SCORES_PATH)} 🥳🎉🎈`)
+  return data
 }
 
 module.exports = {
