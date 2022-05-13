@@ -41,6 +41,5 @@ module.exports = {
   errorWithCauses,
   error,
   info,
-  actionsOutput,
   displayFile,
 };
