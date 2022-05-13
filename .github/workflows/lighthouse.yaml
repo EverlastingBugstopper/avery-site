@@ -1,7 +1,7 @@
 on: [push]
 jobs:
   lighthouse:
-    if: startsWith(github.head_ref, 'lighthouse-patches') == false && github.event.pull_request.head.repo.full_name == github.repository
+    if: startsWith(github.head_ref, 'lighthouse-patches') == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
