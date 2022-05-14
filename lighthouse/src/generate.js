@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const { makeBadge } = require("badge-maker");
-const { LIGHTHOUSE_DIR, displayFile, info } = require("./utils.js");
+const { LIGHTHOUSE_DIR, displayFile, info, setActionOutput } = require("./utils.js");
 const { updateScoresJSONFromReport } = require("./scores.js");
 
 const generateBadges = () => {
@@ -35,7 +35,7 @@ const generateComment = () => {
     comment += `| ${name} | ${score}% |\n`;
   }
   info("printing comment for GitHub PR...");
-  process.stdout.write(`::set-output name=comment::${comment}`);
+  setActionOutput("comment", comment);
 };
 
 const generateAndWriteBadges = () => {
