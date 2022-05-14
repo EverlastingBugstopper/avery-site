@@ -37,27 +37,38 @@ jobs:
       - name: Install npm dependencies
         run: npm i
 
-      - name: Generate Lighthouse badges
+      - name: Generate Lighthouse badges (main branch only)
         if: ${{ steps.normalize-branch.outputs.name }} == "main"
         id: badges
         run: npm run badges:write
 
-      - name: Generate Lighthouse badge comment
-        if: ${{ steps.normalize-branch.outputs.name }} != "main"
-        id: badge-comment
-        run: npm run badges:comment
-
       - name: Create PR with Lighthouse results (on main branch only)
+        id: badge-pr
         if: ${{ steps.normalize-branch.outputs.name }} == "main"
         uses: peter-evans/create-pull-request@v4
         with:
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
           commit-message: "chore: updates lighthouse badges"
           title: "chore: updates lighthouse badges for `${{ steps.git-branch.outputs.name }}`"
           branch: ${{ steps.patch-branch.outputs.name }}
 
-      - name: Find current preview
+      - name: Automerge Lighthouse badge PR (on main branch only)
+        if: ${{ steps.badge-pr.outputs.pull-request-operation }} == "created"
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          pull-request-number: ${{ steps.badge-pr.outputs.pull-request-number }}
+          merge-method: rebase
+
+      - name: Find current PR (on non-main branch only)
+        if: ${{ steps.normalize-branch.outputs.name }} != "main"
         uses: jwalton/gh-find-current-pr@v1
         id: finder
+
+      - name: Generate Lighthouse badge comment (on non-main branch only)
+        if: ${{ steps.normalize-branch.outputs.name }} != "main"
+        id: badge-comment
+        run: npm run badges:comment
 
       - name: Create comment with Lighthouse results (on non-main branch only)
         if: ${{ steps.normalize-branch.outputs.name }} != "main"
