@@ -15,8 +15,8 @@ const generateBadges = () => {
   for (const [camelCaseName, score] of Object.entries(scores)) {
     const name = camelCaseName.replace(/([A-Z])/g, " $1").toLowerCase();
 
-    let color = "red";
     let emoji = "📛";
+    let color = "red";
     if (score >= 90) {
       emoji = "✅";
       color = "success";
