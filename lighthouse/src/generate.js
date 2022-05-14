@@ -35,7 +35,6 @@ const generateComment = () => {
   let comment = "### Lighthouse Audit Results\n\n";
   comment += "| test | score | color |\n| --- | --- | --- |\n";
   for (const { name, score, emoji } of badges) {
-    if (color === "red")
     comment += `| ${name} | ${score}% | ${emoji} |\n`;
   }
   info("printing comment for GitHub PR...");
