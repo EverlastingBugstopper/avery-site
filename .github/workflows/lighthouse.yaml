@@ -20,7 +20,7 @@ jobs:
         run: BRANCH=${{ steps.git-branch.outputs.name }}; echo ::set-output name=name::${BRANCH/\//-}
 
       - name: Get Vercel preview URL
-        run: if [ ${{ steps.git-branch.outputs.name }} = "main" ]; then URL="https://averyharnish.com"; else URL="https://avery-site-git-${{ steps.git-branch.outputs.name }}-averyharnish.vercel.app"; fi; echo ::set-output name=url::$URL
+        run: if [ ${{ steps.normalize-branch.outputs.name }} = "main" ]; then URL="https://averyharnish.com"; else URL="https://avery-site-git-${{ steps.normalize-branch.outputs.name }}-averyharnish.vercel.app"; fi; echo ::set-output name=url::$URL
         id: vercel
 
       - name: Run Lighthouse Audit
