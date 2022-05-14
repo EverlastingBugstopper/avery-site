@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "browser-sync start -s public -f public",
-    "badges": "node ./lighthouse/src/generate.js"
+    "badges:write": "node -e 'require(\"./lighthouse/src/generate.js\").generateAndWriteBadges()'",
+    "badges:comment": "node -e 'require(\"./lighthouse/src/generate.js\").generateComment()'"
   },
   "description": "Avery's personal site",
   "homepage": "https://averyharnish.com",
