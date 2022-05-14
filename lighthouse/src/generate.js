@@ -29,7 +29,8 @@ const generateBadges = () => {
 
 const generateComment = () => {
   const badges = generateBadges();
-  let comment = "# Lighthouse Audit Results\n\n";
+  let comment = "## Lighthouse Audit Results\n\n";
+  comment += "[![Lighthouse Logo](/lighthouse/logo.png)](./lighthouse/README.md)\n\n"
   comment += "| test | score |\n| --- | --- |\n";
   for (const { name, score } of badges) {
     comment += `| ${name} | ${score}% |\n`;
