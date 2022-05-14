@@ -56,7 +56,7 @@ jobs:
           branch: ${{ steps.patch-branch.outputs.name }}
 
       - name: Automerge Lighthouse badge PR (on main branch only)
-        if: steps.git-branch.outputs.name == 'main'
+        if: steps.git-branch.outputs.name == 'main' && steps.badge-pr.outputs.pull-request-operation == 'created'
         uses: peter-evans/enable-pull-request-automerge@v2
         with:
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
