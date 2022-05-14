@@ -3,20 +3,6 @@ const fs = require("fs");
 const { info, error, errorWithCauses, displayFile, LIGHTHOUSE_DIR } = require("./utils.js");
 const SCORES_PATH = path.join(LIGHTHOUSE_DIR, "scores.json");
 
-const validateScoresJSON = () => {
-  const SCORES_JSON = require(SCORES_PATH);
-  const data = SCORES_JSON["data"];
-  if (!data) {
-    throw error(
-      `${displayFile(
-        SCORES_PATH
-      )} is malformed, it must have a top-level 'data' property`
-    );
-  }
-  info(`validated ${displayFile(SCORES_PATH)} ✅`);
-  return validateData(data)
-}
-
 const validateData = (data) => {
   const REQUIRED_SCORES = [
     "accessibility",
@@ -85,15 +71,6 @@ const updateScoresJSONFromReport = () => {
 
 const updateScoresJSON = (accessibility, bestPractices, performance, seo) => {
   const data = validateData({ accessibility, bestPractices, performance, seo })
-  let existingScores = {};
-  try {
-    // this will fail if the file hasn't been created
-    existingScores = validateScoresJSON();
-    info("found existing scores...")
-  } catch (_) {
-    info("no existing scores detected...")
-    // do nothing with the error
-  }
   info(`writing new scores to ${displayFile(SCORES_PATH)}...`)
   fs.writeFileSync(SCORES_PATH, JSON.stringify({ data }, null, 2));
   info(`updated ${displayFile(SCORES_PATH)} 🥳🎉🎈`)
@@ -102,7 +79,6 @@ const updateScoresJSON = (accessibility, bestPractices, performance, seo) => {
 
 module.exports = {
   updateScoresJSONFromReport,
-  validateScoresJSON,
   validateData,
   updateScoresJSON
 };

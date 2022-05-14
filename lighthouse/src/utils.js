@@ -36,10 +36,26 @@ const displayFile = (fullPath) => {
   return fullPath.replace(ROOT_DIR, "");
 };
 
+const setActionOutput = (name, value) => {
+  process.stdout.write(`::set-output name=${name}::${singleLineInBash(value)}\n`)
+}
+
+const singleLineInBash = (input) => {
+  let result = replaceString('%', '%25', input);
+  result = replaceString('\n', '%0A', result);
+  result = replaceString('\r', '%0D', result);
+  return result;
+}
+
+const replaceString = (oldSubstring, replaceSubstring, fullString) => {
+  return fullString.split(oldSubstring).join(replaceSubstring)
+}
+
 module.exports = {
   LIGHTHOUSE_DIR,
   errorWithCauses,
   error,
   info,
   displayFile,
+  setActionOutput
 };
