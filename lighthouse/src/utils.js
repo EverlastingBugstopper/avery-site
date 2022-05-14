@@ -37,7 +37,7 @@ const displayFile = (fullPath) => {
 };
 
 const setActionOutput = (name, value) => {
-  process.stdout.write(`::set-output name=${singleLineInBash(name)}::${value}\n`)
+  process.stdout.write(`::set-output name=${name}::${singleLineInBash(value)}\n`)
 }
 
 const singleLineInBash = (input) => {
