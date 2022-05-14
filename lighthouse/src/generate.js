@@ -1,7 +1,12 @@
 const path = require("path");
 const fs = require("fs");
 const { makeBadge } = require("badge-maker");
-const { LIGHTHOUSE_DIR, displayFile, info, setActionOutput } = require("./utils.js");
+const {
+  LIGHTHOUSE_DIR,
+  displayFile,
+  info,
+  setActionOutput,
+} = require("./utils.js");
 const { updateScoresJSONFromReport } = require("./scores.js");
 
 const generateBadges = () => {
@@ -13,10 +18,10 @@ const generateBadges = () => {
     let color = "red";
     let emoji = "📛";
     if (score >= 90) {
-      emoji = "✅"
+      emoji = "✅";
       color = "success";
     } else if (score >= 50) {
-      emoji = "⚠️"
+      emoji = "⚠️";
       color = "yellow";
     }
     const svg = makeBadge({
