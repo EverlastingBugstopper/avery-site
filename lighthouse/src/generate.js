@@ -11,9 +11,12 @@ const generateBadges = () => {
     const name = camelCaseName.replace(/([A-Z])/g, " $1").toLowerCase();
 
     let color = "red";
+    let emoji = "📛";
     if (score >= 90) {
+      emoji = "✅"
       color = "success";
     } else if (score >= 50) {
+      emoji = "⚠️"
       color = "yellow";
     }
     const svg = makeBadge({
@@ -22,17 +25,18 @@ const generateBadges = () => {
       labelColor: "gray",
       color,
     });
-    badges.push({ camelCaseName, name, score, svg, color });
+    badges.push({ camelCaseName, name, score, svg, color, emoji });
   }
   return badges;
 };
 
 const generateComment = () => {
   const badges = generateBadges();
-  let comment = "## Lighthouse Audit Results\n\n";
-  comment += "| test | score |\n| --- | --- |\n";
-  for (const { name, score } of badges) {
-    comment += `| ${name} | ${score}% |\n`;
+  let comment = "### Lighthouse Audit Results\n\n";
+  comment += "| test | score | color |\n| --- | --- | --- |\n";
+  for (const { name, score, emoji } of badges) {
+    if (color === "red")
+    comment += `| ${name} | ${score}% | ${emoji} |\n`;
   }
   info("printing comment for GitHub PR...");
   setActionOutput("comment", comment);
