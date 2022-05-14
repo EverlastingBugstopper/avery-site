@@ -38,17 +38,17 @@ jobs:
         run: npm i
 
       - name: Generate Lighthouse badges
-        if: steps.normalize-branch.outputs.name == "main"
+        if: ${{ steps.normalize-branch.outputs.name }} == "main"
         id: badges
         run: npm run badges:write
 
       - name: Generate Lighthouse badge comment
-        if: steps.normalize-branch.outputs.name != "main"
+        if: ${{ steps.normalize-branch.outputs.name }} != "main"
         id: badge-comment
         run: npm run badges:comment
 
       - name: Create PR with Lighthouse results (on main branch only)
-        if: steps.normalize-branch.outputs.name == "main"
+        if: ${{ steps.normalize-branch.outputs.name }} == "main"
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: "chore: updates lighthouse badges"
@@ -60,7 +60,7 @@ jobs:
         id: finder
 
       - name: Create comment with Lighthouse results (on non-main branch only)
-        if: steps.normalize-branch.outputs.name != "main"
+        if: ${{ steps.normalize-branch.outputs.name }} != "main"
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           number: ${{ steps.finder.outputs.pr }}
