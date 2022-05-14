@@ -2,7 +2,7 @@ on: [push]
 
 jobs:
   lighthouse:
-    if: contains(env.GITHUB_REF, 'lighthouse-patches') == 'false'
+    if: contains(env.GITHUB_REF, 'lighthouse-patches') != 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
