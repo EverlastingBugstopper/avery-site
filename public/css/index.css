@@ -32,7 +32,7 @@ h1 {
   line-height: 5.5rem;
 }
 
-content {
+article {
   font-family: "Muli", sans-serif;
   color: var(--main-font-color);
   font-size: 1.5rem;
@@ -107,8 +107,8 @@ h1 {
 
 /* big screens, extra padding */
 @media only screen and (min-width: 1600px) {
-  body .content {
-    padding-left: 50%;
-    padding-right: 50%;
+  body {
+    padding-left: 25%;
+    padding-right: 25%;
   }
 }
