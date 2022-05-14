@@ -35,7 +35,7 @@ const generateComment = () => {
     comment += `| ${name} | ${score}% |\n`;
   }
   info("printing comment for GitHub PR...");
-  process.stdout.write(comment);
+  process.stdout.write(`::set-output name=comment::${comment}`);
 };
 
 const generateAndWriteBadges = () => {
