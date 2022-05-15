@@ -1,11 +1,14 @@
 /* theme colors */
 :root {
   --primary-bg-color: #fff;
-  --secondary-bg-color: #6610f2;
-  --highlighted-color: #4709ac;
-  --main-font-color: #343a40;
-  --secondary-font-color: var(--secondary-bg-color);
-  --sidebar-width: 100px;
+  --primary-font-color: #242038;
+  --secondary-font-color: #359218;
+  --web-color: #0000EE;
+  --cloudflare-color: #f6821f;
+  --apollo-color: #3f20ba;
+  --rust-color: #ed6935;
+  --twitter-color: #1e9bef;
+  --github-color: #24292f;
 }
 
 /* font imports */
@@ -23,10 +26,14 @@
   src: url("../fonts/muli.ttf") format("truetype");
 }
 
-/* text styling */
+/* text styling and colors */
+body {
+  background-color: var(--primary-bg-color)
+}
+
 h1 {
   font-family: "Royal Acidbath Outline", serif;
-  color: var(--main-font-color);
+  color: var(--primary-font-color);
   font-weight: 600;
   font-size: 6rem;
   line-height: 5.5rem;
@@ -34,13 +41,13 @@ h1 {
 
 article {
   font-family: "Muli", sans-serif;
-  color: var(--main-font-color);
+  color: var(--primary-font-color);
   font-size: 1.5rem;
   line-height: 3rem;
 }
 
 firstname {
-  color: var(--main-font-color);
+  color: var(--primary-font-color);
 }
 
 lastname {
@@ -48,22 +55,76 @@ lastname {
 }
 
 a {
-  line-height: 1.5rem;
-  font-weight: bold;
   text-decoration: none;
-  color: var(--secondary-bg-color);
-}
-
-a:hover {
-  text-shadow: 2px 2px var(--main-font-color);
-  color: var(--primary-bg-color) !important;
-  background-color: var(--secondary-bg-color) !important;
+  color: var(--secondary-font-color);
 }
 
 a:hover,
 a:focus,
 a:active {
-  color: var(--highlighted-color);
+  text-shadow: 1px 1px var(--primary-font-color);
+  color: var(--primary-bg-color) !important;
+  background-color: var(--secondary-font-color);
+}
+
+a.cloudflare {
+  color: var(--cloudflare-color);
+}
+
+a.cloudflare:hover,
+a.cloudflare:focus,
+a.cloudflare:active {
+  background-color: var(--cloudflare-color);
+}
+
+a.apollo {
+  color: var(--apollo-color);
+}
+
+a.apollo:hover,
+a.apollo:focus,
+a.apollo:active {
+  background-color: var(--apollo-color);
+}
+
+a.rust {
+  color: var(--rust-color);
+}
+
+a.rust:hover,
+a.rust:focus,
+a.rust:active {
+  background-color: var(--rust-color);
+}
+
+a.github {
+  color: var(--github-color);
+}
+
+a.github:hover,
+a.github:focus,
+a.github:active {
+  background-color: var(--github-color);
+}
+
+a.twitter {
+  color: var(--twitter-color);
+}
+
+a.twitter:hover,
+a.twitter:focus,
+a.twitter:active {
+  background-color: var(--twitter-color);
+}
+
+a.web {
+  color: var(--web-color);
+}
+
+a.web:hover,
+a.web:focus,
+a.web:active {
+  background-color: var(--web-color);
 }
 
 /* layout */
@@ -74,10 +135,6 @@ a {
 body {
   padding-left: 10%;
   padding-right: 10%;
-}
-
-h1 {
-  text-align: center;
 }
 
 /* not phones, center vertically */
@@ -98,6 +155,7 @@ h1 {
   }
 }
 
+/* small-medium screens, extra padding */
 @media only screen and (min-width: 900px) {
   body {
     padding-left: 20%;
@@ -105,7 +163,7 @@ h1 {
   }
 }
 
-/* big screens, extra padding */
+/* big screens, extra extra padding */
 @media only screen and (min-width: 1600px) {
   body {
     padding-left: 25%;
