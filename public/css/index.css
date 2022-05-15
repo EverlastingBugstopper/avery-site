@@ -1,9 +1,9 @@
 /* theme colors */
 :root {
-  --primary-bg-color: #E4FDE1;
+  --primary-bg-color: #e4fde1;
   --primary-font-color: #242038;
   --secondary-font-color: #359218;
-  --web-color: #0000EE;
+  --web-color: #0000ee;
   --cloudflare-color: #f6821f;
   --apollo-color: #3f20ba;
   --rust-color: #ed6935;
@@ -28,7 +28,7 @@
 
 /* text styling and colors */
 body {
-  background-color: var(--primary-bg-color)
+  background-color: var(--primary-bg-color);
 }
 
 h1 {
