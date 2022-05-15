@@ -1,6 +1,12 @@
 const path = require("path");
 const fs = require("fs");
-const { info, error, errorWithCauses, displayFile, LIGHTHOUSE_DIR } = require("./utils.js");
+const {
+  info,
+  error,
+  errorWithCauses,
+  displayFile,
+  LIGHTHOUSE_DIR,
+} = require("./utils.js");
 const SCORES_PATH = path.join(LIGHTHOUSE_DIR, "scores.json");
 
 const validateData = (data) => {
@@ -57,28 +63,33 @@ const validateData = (data) => {
 };
 
 const updateScoresJSONFromReport = () => {
-  const reportPath = path.join(LIGHTHOUSE_DIR, "report.json")
-  info(`reading lighthouse report from ${displayFile(reportPath)}...`)
+  const reportPath = path.join(LIGHTHOUSE_DIR, "report.json");
+  info(`reading lighthouse report from ${displayFile(reportPath)}...`);
   if (!fs.statSync(reportPath).isFile()) {
-    throw error(`${reportPath} is not a file.`)
+    throw error(`${reportPath} is not a file.`);
   }
   const reportContents = require(reportPath);
-  info(`read lighthouse report ✅`)
-  info("validating lighthouse report...")
+  info(`read lighthouse report ✅`);
+  info("validating lighthouse report...");
   const scores = reportContents.data[0].scores;
-  return updateScoresJSON(scores.accessibility, scores.bestPractices, scores.performance, scores.seo)
+  return updateScoresJSON(
+    scores.accessibility,
+    scores.bestPractices,
+    scores.performance,
+    scores.seo
+  );
 };
 
 const updateScoresJSON = (accessibility, bestPractices, performance, seo) => {
-  const data = validateData({ accessibility, bestPractices, performance, seo })
-  info(`writing new scores to ${displayFile(SCORES_PATH)}...`)
+  const data = validateData({ accessibility, bestPractices, performance, seo });
+  info(`writing new scores to ${displayFile(SCORES_PATH)}...`);
   fs.writeFileSync(SCORES_PATH, JSON.stringify({ data }, null, 2));
-  info(`updated ${displayFile(SCORES_PATH)} 🥳🎉🎈`)
-  return data
-}
+  info(`updated ${displayFile(SCORES_PATH)} 🥳🎉🎈`);
+  return data;
+};
 
 module.exports = {
   updateScoresJSONFromReport,
   validateData,
-  updateScoresJSON
+  updateScoresJSON,
 };

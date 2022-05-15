@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "scripts": {
     "start": "browser-sync start -s public -f public",
+    "fmt": "prettier --write **",
+    "fmt:check": "prettier --check **",
+    "format": "npm run fmt",
+    "format:check": "npm run fmt:check",
     "badges:write": "node -e 'require(\"./lighthouse/src/generate.js\").generateAndWriteBadges()'",
     "badges:comment": "node -e 'require(\"./lighthouse/src/generate.js\").generateComment()'"
   },
@@ -17,7 +21,8 @@
   },
   "devDependencies": {
     "badge-maker": "^3.3.1",
-    "browser-sync": "^2.27.9"
+    "browser-sync": "^2.27.9",
+    "prettier": "^2.6.2"
   },
   "volta": {
     "node": "18.1.0"
