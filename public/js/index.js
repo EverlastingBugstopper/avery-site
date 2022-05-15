@@ -17,7 +17,7 @@ let emojiHandle;
 
 const getEmojiHandle = () => {
   if (!emojiHandle) {
-    emojiHandle = document.getElementById("emoji");
+    emojiHandle = document.getElementById("spinning-emoji");
   }
   return emojiHandle;
 };
