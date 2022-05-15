@@ -10,6 +10,18 @@ class Element {
     return this._handle;
   }
 
+  listenForClick(onClick) {
+    this.getHandle().addEventListener("click", onClick);
+  }
+
+  addClass(className) {
+    this.getHandle().classList.add(className);
+  }
+
+  removeClass(className) {
+    this.getHandle().classList.remove(className);
+  }
+
   getInnerHTML() {
     return this.getHandle().innerHTML;
   }
@@ -23,14 +35,22 @@ class Element {
 
 class ElementJar {
   constructor(elementIDs) {
-    this.elements = {}
+    this.elements = {};
     for (const elementID of elementIDs) {
       this.elements[elementID] = new Element(elementID);
     }
   }
 
-  scoop(elementID) {
-    return this.elements[elementID]
+  scoop(elementIDs) {
+    if (Array.isArray(elementIDs)) {
+      let scoop = [];
+      for (const elementID of elementIDs) {
+        scoop.push(this.elements[elementID]);
+      }
+      return scoop;
+    } else {
+      return this.elements[elementIDs];
+    }
   }
 }
 

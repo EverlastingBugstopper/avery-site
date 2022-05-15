@@ -1,6 +1,7 @@
 class EmojiSlideShow {
-  constructor(emojiElement) {
+  constructor(emojiElement, interval = 600) {
     this.emojiOnStage = emojiElement;
+    this.interval = interval;
     this.emojis = [
       "😁",
       "🤔",
@@ -20,19 +21,18 @@ class EmojiSlideShow {
   next() {
     return () => {
       const emojiOnDeck = this.emojis[this.emojI];
-    console.log(`great job ${this.emojiOnStage.getInnerHTML()}, coming up to the stage next is ${emojiOnDeck}`)
-    this.emojiOnStage.setInnerHTML(emojiOnDeck);
-    if (this.emojI == this.emojis.length - 1) {
-      this.emojI = 0;
-    } else {
-      this.emojI += 1;
-    }
-  }
+      this.emojiOnStage.setInnerHTML(emojiOnDeck);
+      if (this.emojI == this.emojis.length - 1) {
+        this.emojI = 0;
+      } else {
+        this.emojI += 1;
+      }
+    };
   }
 
-  party() {
-    setInterval(this.next(), 600);
+  enable() {
+    setInterval(this.next(), this.interval);
   }
 }
 
-export { EmojiSlideShow }
+export { EmojiSlideShow };

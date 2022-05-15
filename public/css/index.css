@@ -7,39 +7,66 @@ body.light {
   --link-highlight-font-color: var(--primary-bg-color);
   --link-highlight-bg-color: var(--secondary-font-color);
   --link-shadow-color: var(--primary-font-color);
+  --link-shadow-depth: 1px 1px;
   --web-color: #0000ee;
+  --web-highlight-bg-color: var(--web-color);
   --cloudflare-color: #f6821f;
+  --cloudflare-highlight-bg-color: var(--cloudflare-color);
   --apollo-color: #3f20ba;
-  --rust-color: #ed6935;
+  --apollo-highlight-bg-color: var(--apollo-color);
+  --rust-color: #ca4e1e;
+  --rust-highlight-bg-color: var(--rust-color);
   --twitter-color: #1e9bef;
+  --twitter-highlight-bg-color: var(--twitter-color);
   --github-color: #24292f;
-  --github-highlight-bg-color: #a8a8a8;
+  --github-highlight-bg-color: var(--github-color);
+  --menu-toggle-size: 25px;
 }
 
+/* dark mode block is duplicated below,
+  only edit one, then copy to other */
 body.dark {
   --primary-font-color: #fff;
   --secondary-font-color: #4ebd73;
   --primary-bg-color: #2a2a2a;
+  --link-shadow-depth: 2px 2px;
   --apollo-color: #ad9bf6;
+  --apollo-highlight-bg-color: #3f20ba;
+  --cloudflare-highlight-bg-color: #b86115;
   --github-color: #e1e1e1;
   --github-highlight-bg-color: #424b56;
+  --twitter-highlight-bg-color: #1878b8;
   --web-color: #3cc1ff;
+  --web-highlight-bg-color: #0000ee;
   --link-highlight-font-color: #fff;
   --link-shadow-color: var(--primary-bg-color);
+  --link-highlight-bg-color: #2f7145;
 }
 
-/* dark mode block is duplicated here for a quick default */
+/* dark mode block is duplicated above,
+  only edit one, then copy to other.
+  i believe that we need both so that
+  the page doesn't flicker while it waits for
+  JavaScript to do its thing. probably a good
+  candidate for a CSS compiler of some sort
+*/
 @media (prefers-color-scheme: dark) {
   :root {
     --primary-font-color: #fff;
     --secondary-font-color: #4ebd73;
     --primary-bg-color: #2a2a2a;
+    --link-shadow-depth: 2px 2px;
     --apollo-color: #ad9bf6;
+    --apollo-highlight-bg-color: #3f20ba;
+    --cloudflare-highlight-bg-color: #b86115;
     --github-color: #e1e1e1;
     --github-highlight-bg-color: #424b56;
+    --twitter-highlight-bg-color: #1878b8;
     --web-color: #3cc1ff;
+    --web-highlight-bg-color: #0000ee;
     --link-highlight-font-color: #fff;
     --link-shadow-color: var(--primary-bg-color);
+    --link-highlight-bg-color: #2f7145;
   }
 }
 
@@ -53,14 +80,57 @@ body.dark {
 
 @font-face {
   font-family: "Muli";
-  font-style: normal;
-  font-weight: 400;
   src: url("../fonts/muli.ttf") format("truetype");
 }
 
 /* text styling and colors */
 body {
   background-color: var(--primary-bg-color);
+  fill: var(--primary-font-color);
+  display: flex;
+  margin: 15px;
+  padding-right: var(--menu-toggle-size);
+}
+
+body > nav {
+  flex: 0 0 var(--menu-toggle-size);
+  align-self: stretch;
+  text-align: center;
+  height: 100%;
+  width: var(--menu-toggle-size);
+}
+
+nav > toggle {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: var(--menu-toggle-size);
+  height: var(--menu-toggle-size);
+}
+
+nav > toggle > svg {
+  width: var(--menu-toggle-size);
+  height: var(--menu-toggle-size);
+}
+
+nav > toggle > svg > rect {
+  width: var(--menu-toggle-size);
+  height: 12%;
+}
+
+nav.closed > .menu-item {
+  display: none;
+}
+
+nav.open > .menu-item,
+nav:hover > .menu-item,
+nav:active > .menu-item,
+nav:focus > .menu-item {
+  display: inline;
+}
+
+content {
+  flex: 1;
 }
 
 h1 {
@@ -77,6 +147,7 @@ article {
   color: var(--primary-font-color);
   font-size: 1.5rem;
   line-height: 3rem;
+  font-weight: bold;
 }
 
 firstname {
@@ -88,6 +159,7 @@ lastname {
 }
 
 a {
+  font-weight: bolder;
   text-decoration: none;
   color: var(--secondary-font-color);
 }
@@ -95,7 +167,7 @@ a {
 a:hover,
 a:focus,
 a:active {
-  text-shadow: 1px 1px var(--link-shadow-color);
+  text-shadow: var(--link-shadow-depth) var(--link-shadow-color);
   color: var(--link-highlight-font-color) !important;
   background-color: var(--link-highlight-bg-color);
 }
@@ -107,7 +179,7 @@ a.cloudflare {
 a.cloudflare:hover,
 a.cloudflare:focus,
 a.cloudflare:active {
-  background-color: var(--cloudflare-color);
+  background-color: var(--cloudflare-highlight-bg-color);
 }
 
 a.apollo {
@@ -117,7 +189,7 @@ a.apollo {
 a.apollo:hover,
 a.apollo:focus,
 a.apollo:active {
-  background-color: var(--apollo-color);
+  background-color: var(--apollo-highlight-bg-color);
 }
 
 a.rust {
@@ -127,7 +199,7 @@ a.rust {
 a.rust:hover,
 a.rust:focus,
 a.rust:active {
-  background-color: var(--rust-color);
+  background-color: var(--rust-highlight-bg-color);
 }
 
 a.github {
@@ -147,7 +219,7 @@ a.twitter {
 a.twitter:hover,
 a.twitter:focus,
 a.twitter:active {
-  background-color: var(--twitter-color);
+  background-color: var(--twitter-highlight-bg-color);
 }
 
 a.web {
@@ -157,7 +229,7 @@ a.web {
 a.web:hover,
 a.web:focus,
 a.web:active {
-  background-color: var(--web-color);
+  background-color: var(--web-highlight-bg-color);
 }
 
 /* layout */

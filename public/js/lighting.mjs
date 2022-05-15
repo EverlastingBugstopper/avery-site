@@ -5,9 +5,9 @@ class LightingMode {
       window.matchMedia &&
       window.matchMedia("(prefers-color-scheme: dark)").matches
     ) {
-      this.setDark()
+      this.setDark();
     } else {
-      this.setLight()
+      this.setLight();
     }
   }
 
@@ -18,14 +18,14 @@ class LightingMode {
   setDark() {
     window.document.body.classList.add("dark");
     window.document.body.classList.remove("light");
-    this.toggleElement.setInnerHTML("🌙")
+    this.toggleElement.setInnerHTML("🌙");
     this.mode = "dark";
   }
 
   setLight() {
     window.document.body.classList.add("light");
     window.document.body.classList.remove("dark");
-    this.toggleElement.setInnerHTML("☀️")
+    this.toggleElement.setInnerHTML("☀️");
     this.mode = "light";
   }
 
@@ -39,21 +39,17 @@ class LightingMode {
 
   toggle() {
     if (this.isLight()) {
-      console.log("hey! who turned off the lights??")
       this.setDark();
     } else if (this.isDark()) {
-      console.log("too bright too bright!!")
       this.setLight();
     } else {
-      console.error("oops... not sure if we're in dark or light mode, sorry.");
+      this.setLight();
     }
   }
 
   enable() {
-    this.toggleElement.getHandle().addEventListener("click", () => {
-      this.toggle()
-    });
+    this.toggleElement.listenForClick(() => this.toggle());
   }
 }
 
-export { LightingMode }
+export { LightingMode };
