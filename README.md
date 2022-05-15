@@ -18,7 +18,7 @@ This is just a small site with a bit of information about me.
 
 ## Development
 
-1) Install node (I like [volta](https://volta.sh)).
-1) Run `git clone https://github.com/EverlastingBugstopper/avery-site; cd avery-site`
-1) Run `npm i; npm run start`
-1) Your browser should open automatically and reload on any changes made to assets in the `public` directory
+1. Install node (I like [volta](https://volta.sh)).
+1. Run `git clone https://github.com/EverlastingBugstopper/avery-site; cd avery-site`
+1. Run `npm i; npm run start`
+1. Your browser should open automatically and reload on any changes made to assets in the `public` directory
