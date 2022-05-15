@@ -43,6 +43,9 @@ jobs:
         id: badges
         run: npm run badges:write
 
+      - name: Run prettier
+        run: npm run format
+
       - name: Create PR with Lighthouse results (on main branch only)
         id: badge-pr
         if: steps.git-branch.outputs.name == 'main'
