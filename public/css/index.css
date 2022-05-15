@@ -1,14 +1,46 @@
 /* theme colors */
-:root {
+:root,
+body.light {
   --primary-bg-color: #fff;
   --primary-font-color: #242038;
   --secondary-font-color: #359218;
+  --link-highlight-font-color: var(--primary-bg-color);
+  --link-highlight-bg-color: var(--secondary-font-color);
+  --link-shadow-color: var(--primary-font-color);
   --web-color: #0000ee;
   --cloudflare-color: #f6821f;
   --apollo-color: #3f20ba;
   --rust-color: #ed6935;
   --twitter-color: #1e9bef;
   --github-color: #24292f;
+  --github-highlight-bg-color: #a8a8a8;
+}
+
+body.dark {
+  --primary-font-color: #fff;
+  --secondary-font-color: #4ebd73;
+  --primary-bg-color: #2a2a2a;
+  --apollo-color: #ad9bf6;
+  --github-color: #e1e1e1;
+  --github-highlight-bg-color: #424b56;
+  --web-color: #3cc1ff;
+  --link-highlight-font-color: #fff;
+  --link-shadow-color: var(--primary-bg-color);
+}
+
+/* dark mode block is duplicated here for a quick default */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-font-color: #fff;
+    --secondary-font-color: #4ebd73;
+    --primary-bg-color: #2a2a2a;
+    --apollo-color: #ad9bf6;
+    --github-color: #e1e1e1;
+    --github-highlight-bg-color: #424b56;
+    --web-color: #3cc1ff;
+    --link-highlight-font-color: #fff;
+    --link-shadow-color: var(--primary-bg-color);
+  }
 }
 
 /* font imports */
@@ -63,9 +95,9 @@ a {
 a:hover,
 a:focus,
 a:active {
-  text-shadow: 1px 1px var(--primary-font-color);
-  color: var(--primary-bg-color) !important;
-  background-color: var(--secondary-font-color);
+  text-shadow: 1px 1px var(--link-shadow-color);
+  color: var(--link-highlight-font-color) !important;
+  background-color: var(--link-highlight-bg-color);
 }
 
 a.cloudflare {
@@ -105,7 +137,7 @@ a.github {
 a.github:hover,
 a.github:focus,
 a.github:active {
-  background-color: var(--github-color);
+  background-color: var(--github-highlight-bg-color);
 }
 
 a.twitter {
