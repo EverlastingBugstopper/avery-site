@@ -1,6 +1,6 @@
 /* theme colors */
 :root {
-  --primary-bg-color: #fff;
+  --primary-bg-color: #E4FDE1;
   --primary-font-color: #242038;
   --secondary-font-color: #359218;
   --web-color: #0000EE;
@@ -37,6 +37,7 @@ h1 {
   font-weight: 600;
   font-size: 6rem;
   line-height: 5.5rem;
+  text-align: center;
 }
 
 article {
@@ -132,40 +133,24 @@ a {
   padding: 0.25rem;
 }
 
-body {
-  padding-left: 10%;
-  padding-right: 10%;
-}
-
-/* not phones, center vertically */
-@media only screen and (min-width: 900px) and (min-height: 650px) {
-  html {
-    height: 100vh;
-    width: 100%;
-    box-sizing: border-box;
-    overflow: hidden;
-    display: table;
-  }
-
-  body {
-    height: 100%;
-    vertical-align: middle;
-    display: table-cell;
-    overflow: hidden;
-  }
+article {
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 0%;
+  padding-bottom: 10%;
 }
 
 /* small-medium screens, extra padding */
 @media only screen and (min-width: 900px) {
-  body {
-    padding-left: 20%;
-    padding-right: 20%;
+  article {
+    padding-left: 15%;
+    padding-right: 15%;
   }
 }
 
 /* big screens, extra extra padding */
 @media only screen and (min-width: 1600px) {
-  body {
+  article {
     padding-left: 25%;
     padding-right: 25%;
   }
