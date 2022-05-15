@@ -140,6 +140,12 @@ article {
   padding-bottom: 10%;
 }
 
+@media only screen and (max-width: 750px) {
+  h1 {
+    margin-bottom: 0px;
+  }
+}
+
 /* small-medium screens, extra padding */
 @media only screen and (min-width: 900px) {
   article {
