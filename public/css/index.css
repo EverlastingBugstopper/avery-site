@@ -20,7 +20,7 @@ body.light {
   --twitter-highlight-bg-color: var(--twitter-color);
   --github-color: #24292f;
   --github-highlight-bg-color: var(--github-color);
-  --menu-toggle-size: 25px;
+  --menu-button-size: 25px;
 }
 
 /* dark mode block is duplicated below,
@@ -87,50 +87,6 @@ body.dark {
 body {
   background-color: var(--primary-bg-color);
   fill: var(--primary-font-color);
-  display: flex;
-  margin: 15px;
-  padding-right: var(--menu-toggle-size);
-}
-
-body > nav {
-  flex: 0 0 var(--menu-toggle-size);
-  align-self: stretch;
-  text-align: center;
-  height: 100%;
-  width: var(--menu-toggle-size);
-}
-
-nav > toggle {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: var(--menu-toggle-size);
-  height: var(--menu-toggle-size);
-}
-
-nav > toggle > svg {
-  width: var(--menu-toggle-size);
-  height: var(--menu-toggle-size);
-}
-
-nav > toggle > svg > rect {
-  width: var(--menu-toggle-size);
-  height: 12%;
-}
-
-nav.closed > .menu-item {
-  display: none;
-}
-
-nav.open > .menu-item,
-nav:hover > .menu-item,
-nav:active > .menu-item,
-nav:focus > .menu-item {
-  display: inline;
-}
-
-content {
-  flex: 1;
 }
 
 h1 {
@@ -142,12 +98,25 @@ h1 {
   text-align: center;
 }
 
+description {
+  font-family: "Muli", sans-serif;
+  color: var(--primary-font-color);
+}
+
 article {
   font-family: "Muli", sans-serif;
   color: var(--primary-font-color);
   font-size: 1.5rem;
   line-height: 3rem;
   font-weight: bold;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
 firstname {
@@ -159,6 +128,7 @@ lastname {
 }
 
 a {
+  cursor: pointer;
   font-weight: bolder;
   text-decoration: none;
   color: var(--secondary-font-color);
@@ -233,6 +203,90 @@ a.web:active {
 }
 
 /* layout */
+body {
+  margin: 15px;
+  padding-right: var(--menu-button-size);
+}
+
+menu-bg {
+  position: absolute;
+  top: -130px;
+  left: -120px;
+  background: var(--secondary-font-color);
+  padding:100px;
+  box-sizing: border-box;
+  border-radius: 100%;
+}
+
+nav {
+  align-self: stretch;
+  position: sticky;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: var(--menu-button-size);
+  top: 0;
+  left: 0;
+  text-align: left;
+  display: flex;
+}
+
+nav > button {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: var(--menu-button-size);
+  height: var(--menu-button-size);
+  margin-bottom: 10%;
+}
+
+nav > button > svg {
+  position: relative;
+  left: 0;
+  width: var(--menu-button-size);
+  height: var(--menu-button-size);
+}
+
+nav > button > svg > rect {
+  position: relative;
+  width: 100%;
+  height: 12%;
+}
+
+nav.closed .menu-item, nav.closed  > button > description  {
+  display: none;
+}
+
+nav.open, nav:hover, nav:active, nav:focus {
+  width: 100px;
+}
+
+nav.open > button,
+nav:hover > button,
+nav:active > button,
+nav:focus > button {
+  text-align: right;
+  width: 100%
+}
+
+nav.open > button > description,
+nav:hover > button > description,
+nav:active > button > description,
+nav:focus > button > description {
+  position: absolute;
+  left: var(--menu-button-size);
+  margin-left: 5%;
+  text-align: left;
+}
+
+nav.open > .menu-item,
+nav:hover > .menu-item,
+nav:active > .menu-item,
+nav:focus > .menu-item {
+  width: 95%;
+  margin-left: 5%;
+}
+
 a {
   padding: 0.25rem;
 }

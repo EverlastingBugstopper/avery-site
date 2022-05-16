@@ -15,18 +15,21 @@
   </head>
   <body>
     <nav class="closed" id="navbar">
-      <toggle class="menu" id="menu-switch">
+      <menu-bg></menu-bg>
+      <button class="menu" id="menu-switch">
         <svg>
-          <rect y="0%" rx="5"></rect>
-          <rect y="33%" rx="5"></rect>
-          <rect y="66%" rx="5"></rect>
+          <rect y="0%" x="0" rx="5"></rect>
+          <rect y="33%" x="0" rx="5"></rect>
+          <rect y="66%" x="0" rx="5"></rect>
         </svg>
-      </toggle>
-      <toggle class="menu-item" id="dark-mode-switch"></toggle>
+      </button>
+      <button class="menu-item" id="lighting-mode-switch">
+        <description></description>
+      </button>
     </nav>
     <content>
       <h1>
-        <emoji id="spinning-emoji">😁</emoji>
+        <emoji id="title-emoji">😁</emoji>
         <firstname>avery</firstname>
         <lastname>harnish</lastname>
       </h1>
@@ -80,7 +83,11 @@
           Most of my recent software can be found on
           <a class="github" href="https://github.com/EverlastingBugstopper"
             >🐙 GitHub</a
-          >, sometimes I tweet on
+          >
+          (including the source for
+          <a href="https://github.com/EverlastingBugstopper/avery-site"
+            ><emoji id="site-emoji">😁</emoji> this website</a
+          >), sometimes I tweet on
           <a class="twitter" href="https://twitter.com/SmoothAsSkippy"
             >🐦 Twitter</a
           >, and you can reliably reach me by emailing

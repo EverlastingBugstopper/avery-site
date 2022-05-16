@@ -1,6 +1,10 @@
 class EmojiSlideShow {
-  constructor(emojiElement, interval = 600) {
-    this.emojiOnStage = emojiElement;
+  constructor(emojiElements, interval = 600) {
+    if (Array.isArray(emojiElements)) {
+      this.emojiStages = emojiElements;
+    } else {
+      this.emojiStages = [emojiElements];
+    }
     this.interval = interval;
     this.emojis = [
       "😁",
@@ -21,7 +25,9 @@ class EmojiSlideShow {
   next() {
     return () => {
       const emojiOnDeck = this.emojis[this.emojI];
-      this.emojiOnStage.setInnerHTML(emojiOnDeck);
+      for (const emojiStage of this.emojiStages) {
+        emojiStage.setInnerHTML(emojiOnDeck);
+      }
       if (this.emojI == this.emojis.length - 1) {
         this.emojI = 0;
       } else {

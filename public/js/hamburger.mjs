@@ -14,14 +14,12 @@ class HamburgerMenu {
   }
 
   open() {
-    console.log("open");
     this.navElement.addClass("open");
     this.navElement.removeClass("closed");
     this.mode = "open";
   }
 
   close() {
-    console.log("close");
     this.navElement.addClass("closed");
     this.navElement.removeClass("open");
     this.mode = "close";
