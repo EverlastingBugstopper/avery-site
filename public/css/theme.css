@@ -1,6 +1,20 @@
 /* text styling and colors */
-body {
+/* TODO: remove nav > left from this when we have a real menu */
+body, nav > left {
   background-color: var(--primary-bg-color);
+  color: var(--primary-font-color);
+  transition: background-color 200ms, color 200ms;
+}
+
+nav > right {
+  background-color: var(--secondary-font-color);
+}
+
+nav > right > button > description {
+  font-family: "Muli", sans-serif;
+  color: var(--primary-bg-color);
+  font-weight: bold;
+  text-shadow: var(--link-shadow-depth) var(--link-shadow-color);
 }
 
 h1 {
@@ -9,27 +23,19 @@ h1 {
   font-size: 6rem;
   line-height: 5.5rem;
   text-align: center;
+  font-weight: var(--h1-font-weight);
+  letter-spacing: 3px;
 }
+
 
 h1 > emoji {
-  text-shadow: 5px 5px 0px var(--rust-color), 10px 10px 0px var(--web-color),
-    15px 15px 0px var(--apollo-color), 20px 20px 0px var(--cloudflare-color);
+  text-shadow: 5px 5px 0px var(--cloudflare-color), 10px 10px 0px var(--rust-color),
+  15px 15px 0px var(--apollo-highlight-bg-color), 20px 20px 0px var(--secondary-font-color);
 }
 
-.menu {
-  fill: var(--primary-bg-color);
-}
-
-.menu-item {
-  padding-top: 1px;
-}
-
-.menu-item > description {
-  font-family: "Muli", sans-serif;
-  color: var(--primary-bg-color);
-  font-weight: bold;
-  font-size: 1rem;
-  text-align: left;
+a > emoji {
+  text-shadow: 1.5px 1.5px 0px var(--cloudflare-color),3px 3px 0px var(--rust-color),
+  4.5px 4.5px 0px var(--apollo-highlight-bg-color), 6px 6px 0px var(--secondary-font-color);
 }
 
 article {

@@ -4,10 +4,14 @@ class Element {
   }
 
   getHandle() {
-    if (!this.handle) {
+    if (!this._handle) {
       this._handle = document.getElementById(this.id);
     }
-    return this._handle;
+    if (!this._handle) {
+      throw new Error(`Could not find an element with the ID '${this.id}'`)
+    } else {
+      return this._handle;
+    }
   }
 
   listenForClick(onClick) {
