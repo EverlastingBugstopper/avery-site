@@ -16,32 +16,32 @@ menu-bg {
 
 @keyframes expandMenuBg {
   from {
-    transform: scale(1)
+    transform: scale(1);
   }
   to {
-    transform: scale(1.5)
+    transform: scale(1.5);
   }
 }
 
 @keyframes shrinkMenuBg {
   from {
-    transform: scale(1.5)
+    transform: scale(1.5);
   }
   to {
-    transform: scale(1)
+    transform: scale(1);
   }
 }
 
 nav.open > menu-bg {
   animation-timing-function: ease-in;
-  animation-duration: .25s;
+  animation-duration: 0.25s;
   animation-name: expandMenuBg;
   animation-fill-mode: forwards;
 }
 
 nav.closed > menu-bg {
   animation-timing-function: ease-in;
-  animation-duration: .25s;
+  animation-duration: 0.25s;
   animation-name: shrinkMenuBg;
   animation-fill-mode: forwards;
 }
@@ -81,7 +81,9 @@ nav > button > svg > rect {
   height: 12%;
 }
 
-nav > .menu-item, .menu-item > button, button > description {
+nav > .menu-item,
+.menu-item > button,
+button > description {
   position: relative;
   width: 100%;
   height: 100%;
@@ -117,7 +119,8 @@ article {
     display: block;
   }
 
-  h1 > name > first, h1 > name > last {
+  h1 > name > first,
+  h1 > name > last {
     display: block;
   }
 }

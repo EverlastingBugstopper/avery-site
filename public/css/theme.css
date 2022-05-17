@@ -12,15 +12,12 @@ h1 {
 }
 
 h1 > emoji {
-  text-shadow: 5px 5px 0px var(--rust-color),
-  10px 10px 0px var(--web-color),
-  15px 15px 0px var(--apollo-color),
-  20px 20px 0px var(--cloudflare-color);
+  text-shadow: 5px 5px 0px var(--rust-color), 10px 10px 0px var(--web-color),
+    15px 15px 0px var(--apollo-color), 20px 20px 0px var(--cloudflare-color);
 }
 
 .menu {
   fill: var(--primary-bg-color);
-
 }
 
 .menu-item {

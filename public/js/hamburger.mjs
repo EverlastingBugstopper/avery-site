@@ -19,7 +19,7 @@ class HamburgerMenu {
   }
 
   close() {
-    console.log("closing")
+    console.log("closing");
     this.navElement.addClass("closed");
     this.navElement.removeClass("open");
     this.mode = "close";
