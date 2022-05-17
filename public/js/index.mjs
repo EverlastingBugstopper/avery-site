@@ -10,7 +10,13 @@ const lightingModeSwitchID = "lighting-mode-switch";
 const navID = "navbar";
 
 const forageForElements = () => {
-  const elementIDs = [titleEmojiID, lightingModeSwitchID, siteEmojiID, menuSwitchID, navID];
+  const elementIDs = [
+    titleEmojiID,
+    lightingModeSwitchID,
+    siteEmojiID,
+    menuSwitchID,
+    navID,
+  ];
   return new ElementJar(elementIDs);
 };
 

@@ -2,7 +2,6 @@ class HamburgerMenu {
   constructor([toggleElement, navElement]) {
     this.toggleElement = toggleElement;
     this.navElement = navElement;
-    this.close();
   }
 
   isClosed() {
@@ -20,6 +19,7 @@ class HamburgerMenu {
   }
 
   close() {
+    console.log("closing")
     this.navElement.addClass("closed");
     this.navElement.removeClass("open");
     this.mode = "close";

@@ -1,0 +1,138 @@
+/* text styling and colors */
+body {
+  background-color: var(--primary-bg-color);
+}
+
+h1 {
+  font-family: "Royal Acidbath Outline", serif;
+  color: var(--primary-font-color);
+  font-size: 6rem;
+  line-height: 5.5rem;
+  text-align: center;
+}
+
+h1 > emoji {
+  text-shadow: 5px 5px 0px var(--rust-color),
+  10px 10px 0px var(--web-color),
+  15px 15px 0px var(--apollo-color),
+  20px 20px 0px var(--cloudflare-color);
+}
+
+.menu {
+  fill: var(--primary-bg-color);
+
+}
+
+.menu-item {
+  padding-top: 1px;
+}
+
+.menu-item > description {
+  font-family: "Muli", sans-serif;
+  color: var(--primary-bg-color);
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: left;
+}
+
+article {
+  font-family: "Muli", sans-serif;
+  color: var(--primary-font-color);
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+name > first {
+  color: var(--primary-font-color);
+}
+
+name > last {
+  color: var(--secondary-font-color);
+}
+
+a {
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: var(--secondary-font-color);
+  display: inline-block;
+  line-height: 2rem;
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-shadow: var(--link-shadow-depth) var(--link-shadow-color);
+  color: var(--link-highlight-font-color) !important;
+  background-color: var(--link-highlight-bg-color);
+  border-radius: 5px;
+}
+
+a.cloudflare {
+  color: var(--cloudflare-color);
+}
+
+a.cloudflare:hover,
+a.cloudflare:focus,
+a.cloudflare:active {
+  background-color: var(--cloudflare-highlight-bg-color);
+}
+
+a.apollo {
+  color: var(--apollo-color);
+}
+
+a.apollo:hover,
+a.apollo:focus,
+a.apollo:active {
+  background-color: var(--apollo-highlight-bg-color);
+}
+
+a.rust {
+  color: var(--rust-color);
+}
+
+a.rust:hover,
+a.rust:focus,
+a.rust:active {
+  background-color: var(--rust-highlight-bg-color);
+}
+
+a.github {
+  color: var(--github-color);
+}
+
+a.github:hover,
+a.github:focus,
+a.github:active {
+  background-color: var(--github-highlight-bg-color);
+}
+
+a.twitter {
+  color: var(--twitter-color);
+}
+
+a.twitter:hover,
+a.twitter:focus,
+a.twitter:active {
+  background-color: var(--twitter-highlight-bg-color);
+}
+
+a.web {
+  color: var(--web-color);
+}
+
+a.web:hover,
+a.web:focus,
+a.web:active {
+  background-color: var(--web-highlight-bg-color);
+}

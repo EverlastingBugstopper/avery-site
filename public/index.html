@@ -11,27 +11,37 @@
     <link rel="icon" type="image/png" href="./favicon.png" />
 
     <!-- Custom styles for this page -->
-    <link href="css/index.css" rel="stylesheet" />
+    <link href="css/variables.css" rel="stylesheet" />
+    <link href="css/theme.css" rel="stylesheet" />
+    <link href="css/fonts.css" rel="stylesheet" />
+    <link href="css/layout.css" rel="stylesheet" />
   </head>
   <body>
-    <nav class="closed" id="navbar">
+    <nav id="navbar">
       <menu-bg></menu-bg>
-      <button class="menu" id="menu-switch">
+      <button type="button" title="toggle menu" class="menu" id="menu-switch">
         <svg>
           <rect y="0%" x="0" rx="5"></rect>
           <rect y="33%" x="0" rx="5"></rect>
           <rect y="66%" x="0" rx="5"></rect>
         </svg>
       </button>
-      <button class="menu-item" id="lighting-mode-switch">
+      <button
+        type="button"
+        title="lighting mode switch"
+        class="menu-item"
+        id="lighting-mode-switch"
+      >
         <description></description>
       </button>
     </nav>
-    <content>
+    <main>
       <h1>
         <emoji id="title-emoji">😁</emoji>
-        <firstname>avery</firstname>
-        <lastname>harnish</lastname>
+        <name>
+          <first>avery</first>
+          <last>harnish</last>
+        </name>
       </h1>
       <article>
         <p>
@@ -101,7 +111,7 @@
           >.
         </p>
       </article>
-    </content>
+    </main>
   </body>
   <!-- JavaScript for this page -->
   <script type="module" src="js/lighting.mjs" type="text/javascript"></script>

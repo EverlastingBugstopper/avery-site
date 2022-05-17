@@ -18,14 +18,14 @@ class LightingMode {
   setDark() {
     window.document.body.classList.add("dark");
     window.document.body.classList.remove("light");
-    this.toggleElement.setInnerHTML('☀️<description>dark mode</description>');
+    this.toggleElement.setInnerHTML("<description>☀️ dark mode</description>");
     this.mode = "dark";
   }
 
   setLight() {
     window.document.body.classList.add("light");
     window.document.body.classList.remove("dark");
-    this.toggleElement.setInnerHTML('🌙<description>light mode</description>');
+    this.toggleElement.setInnerHTML("<description>🌙 light mode</description>");
     this.mode = "light";
   }
 
