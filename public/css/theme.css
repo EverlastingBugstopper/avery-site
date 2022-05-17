@@ -1,6 +1,7 @@
 /* text styling and colors */
 /* TODO: remove nav > left from this when we have a real menu */
-body, nav > left {
+body,
+nav > left {
   background-color: var(--primary-bg-color);
   color: var(--primary-font-color);
   transition: background-color 200ms, color 200ms;
@@ -27,15 +28,18 @@ h1 {
   letter-spacing: 3px;
 }
 
-
 h1 > emoji {
-  text-shadow: 5px 5px 0px var(--cloudflare-color), 10px 10px 0px var(--rust-color),
-  15px 15px 0px var(--apollo-highlight-bg-color), 20px 20px 0px var(--secondary-font-color);
+  text-shadow: 5px 5px 0px var(--cloudflare-color),
+    10px 10px 0px var(--rust-color),
+    15px 15px 0px var(--apollo-highlight-bg-color),
+    20px 20px 0px var(--secondary-font-color);
 }
 
 a > emoji {
-  text-shadow: 1.5px 1.5px 0px var(--cloudflare-color),3px 3px 0px var(--rust-color),
-  4.5px 4.5px 0px var(--apollo-highlight-bg-color), 6px 6px 0px var(--secondary-font-color);
+  text-shadow: 1.5px 1.5px 0px var(--cloudflare-color),
+    3px 3px 0px var(--rust-color),
+    4.5px 4.5px 0px var(--apollo-highlight-bg-color),
+    6px 6px 0px var(--secondary-font-color);
 }
 
 article {
