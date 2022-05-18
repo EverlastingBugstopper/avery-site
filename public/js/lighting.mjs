@@ -8,27 +8,6 @@ class LightingManager {
     this.bodyElement = bodyElement;
     this.lightQuery = lightQuery;
     this.darkQuery = darkQuery;
-
-    // first, check local storage
-    const storedMode = localStorage.getItem(MODE_KEY);
-    if (!storedMode) {
-      // if it's not in localStorage, check their OS level settings
-      if (window.matchMedia) {
-        if (this.darkQuery.matches) {
-          this.setDark();
-        } else if (this.lightQuery.matches) {
-          this.setLight();
-        }
-      }
-    } else if (storedMode === "light") {
-      // if it is in localStorage, apply their settings
-      this.setLight();
-    } else if (storedMode === "dark") {
-      this.setDark();
-    } else {
-      // otherwise, default to light mode
-      this.setLight();
-    }
   }
 
   // if someone switches their OS level lighting mode
@@ -40,18 +19,18 @@ class LightingManager {
 
   // sets the lighting to dark mode
   setDark() {
+    this.toggleElement.setInnerHTML("☀️");
     this.bodyElement.addClass("dark");
     this.bodyElement.removeClass("light");
-    this.toggleElement.setInnerHTML("☀️");
     localStorage.setItem(MODE_KEY, "dark");
     this.mode = "dark";
   }
 
   // set the lighting mode to light mode
   setLight() {
+    this.toggleElement.setInnerHTML("🌜");
     this.bodyElement.addClass("light");
     this.bodyElement.removeClass("dark");
-    this.toggleElement.setInnerHTML("🌜");
     localStorage.setItem(MODE_KEY, "light");
     this.mode = "light";
   }
@@ -80,6 +59,27 @@ class LightingManager {
   enable() {
     this.watch();
     this.toggleElement.listenForClick(() => this.toggle());
+    // first, check local storage
+    const storedMode = localStorage && localStorage.getItem(MODE_KEY);
+    if (!storedMode) {
+      // if it's not in localStorage, check their OS level settings
+      if (window.matchMedia) {
+        if (this.darkQuery.matches) {
+          this.setDark();
+        } else if (this.lightQuery.matches) {
+          this.setLight();
+        }
+      }
+    } else if (storedMode === "light") {
+      // if it is in localStorage, apply their settings
+      this.setLight();
+    } else if (storedMode === "dark") {
+      this.setDark();
+    }
+    if (!this.mode) {
+      // otherwise, default to dark mode
+      this.setDark();
+    }
   }
 }
 
