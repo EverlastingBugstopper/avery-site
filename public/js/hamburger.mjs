@@ -1,4 +1,7 @@
-class HamburgerMenu {
+// currently this does nothing
+// eventually it could become a real hamburger menu
+// but I just don't have that much content right now
+class HamburgerHelper {
   constructor([toggleElement, navElement]) {
     this.toggleElement = toggleElement;
     this.navElement = navElement;
@@ -19,7 +22,6 @@ class HamburgerMenu {
   }
 
   close() {
-    console.log("closing");
     this.navElement.addClass("closed");
     this.navElement.removeClass("open");
     this.mode = "close";
@@ -40,4 +42,4 @@ class HamburgerMenu {
   }
 }
 
-export { HamburgerMenu };
+export { HamburgerHelper };

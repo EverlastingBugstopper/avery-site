@@ -55,7 +55,8 @@ nav {
   overflow-x: hidden;
 }
 
-nav > right, nav > left {
+nav > right,
+nav > left {
   /* fix the buttons in place */
   position: absolute;
   /* make a rounded rectangle */
@@ -113,7 +114,6 @@ h1 {
   h1 > name > last {
     display: block;
   }
-
 }
 
 article {
@@ -123,10 +123,9 @@ article {
   padding-top: 40px;
   padding-left: 10%;
   padding-right: 10%;
-  padding-bottom: auto;
+  padding-bottom: 8%;
   overflow-wrap: break-words;
 }
-
 
 a {
   padding: 0.25rem;

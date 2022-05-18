@@ -2,11 +2,13 @@
 body {
   background-color: var(--primary-bg-color);
   color: var(--primary-font-color);
-  transition: background-color 300ms, color 300ms, font-weight 300ms,
-    text-shadow 300ms, fill 300ms;
+  /* extra egregious transition times on the ol' dark mode ;) */
+  transition: background-color 1.5s, color 1.5s, font-weight 1.5s,
+    text-shadow 1.5s, fill 1.5s;
 }
 
-nav > right , nav > left {
+nav > right,
+nav > left {
   background-color: var(--secondary-font-color);
 }
 
