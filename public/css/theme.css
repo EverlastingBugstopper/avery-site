@@ -24,7 +24,6 @@ h1 {
   line-height: 5.5rem;
   text-align: center;
   font-weight: var(--h1-font-weight);
-  letter-spacing: 3px;
 }
 
 h1 > emoji {
@@ -67,7 +66,6 @@ name > last {
 a {
   cursor: pointer;
   font-weight: bold;
-  letter-spacing: 1px;
   text-decoration: none;
   color: var(--secondary-font-color);
   display: inline-block;
