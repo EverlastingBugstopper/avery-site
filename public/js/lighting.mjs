@@ -34,8 +34,8 @@ class LightingManager {
   // if someone switches their OS level lighting mode
   // detect it and update accordingly
   watch() {
-    this.lightQuery.addListener(e => e.matches && this.setLight());
-    this.darkQuery.addListener(e => e.matches && this.setDark());
+    this.lightQuery.addListener((e) => e.matches && this.setLight());
+    this.darkQuery.addListener((e) => e.matches && this.setDark());
   }
 
   // sets the lighting to dark mode

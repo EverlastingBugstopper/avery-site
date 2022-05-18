@@ -9,8 +9,14 @@ const forageForElements = () => {
     { DOMId: "site-emoji" },
     { DOMId: "lighting-mode-switch" },
     { id: "body", handle: window.document.body },
-    { id: "dark-query", handle: window.matchMedia("(prefers-color-scheme: dark)")},
-    { id: "light-query", handle: window.matchMedia("(prefers-color-scheme: light)")},
+    {
+      id: "dark-query",
+      handle: window.matchMedia("(prefers-color-scheme: dark)"),
+    },
+    {
+      id: "light-query",
+      handle: window.matchMedia("(prefers-color-scheme: light)"),
+    },
   ];
   return new ElementJar(elementInits);
 };
@@ -19,7 +25,14 @@ const forageForElements = () => {
 const setup = () => {
   const elementJar = forageForElements();
   return [
-    new LightingManager(elementJar.scoop(["lighting-mode-switch", "body", "light-query", "dark-query"])),
+    new LightingManager(
+      elementJar.scoop([
+        "lighting-mode-switch",
+        "body",
+        "light-query",
+        "dark-query",
+      ])
+    ),
     new EmojiPresenter(elementJar.scoop(["title-emoji", "site-emoji"])),
   ];
 };
