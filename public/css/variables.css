@@ -27,7 +27,7 @@ body.light {
 /* dark mode block is duplicated below,
   only edit one, then copy to other */
 body.dark {
-  --h1-font-weight: nomral;
+  --h1-font-weight: normal;
   --primary-font-color: #fff;
   --secondary-font-color: #4ebd73;
   --primary-bg-color: #2a2a2a;
