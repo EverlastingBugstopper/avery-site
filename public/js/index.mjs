@@ -1,12 +1,12 @@
 import { ElementJar } from "./element.mjs";
 import { LightingMode } from "./lighting.mjs";
-// import { HamburgerMenu } from "./hamburger.mjs";
 import { EmojiSlideShow } from "./emoji.mjs";
+// import { HamburgerMenu } from "./hamburger.mjs";
 
 const titleEmojiID = "title-emoji";
 const siteEmojiID = "site-emoji";
-// const menuSwitchID = "menu-switch";
 const lightingModeSwitchID = "lighting-mode-switch";
+// const menuSwitchID = "menu-switch";
 // const navID = "navbar";
 
 const forageForElements = () => {
@@ -23,8 +23,8 @@ const forageForElements = () => {
 const setup = () => {
   const elementJar = forageForElements();
   return [
-    new LightingMode(elementJar.scoop(lightingModeSwitchID)),
     // new HamburgerMenu(elementJar.scoop([menuSwitchID, navID])),
+    new LightingMode(elementJar.scoop(lightingModeSwitchID)),
     new EmojiSlideShow(elementJar.scoop([titleEmojiID, siteEmojiID])),
   ];
 };

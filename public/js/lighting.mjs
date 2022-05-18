@@ -25,7 +25,7 @@ class LightingMode {
   setLight() {
     window.document.body.classList.add("light");
     window.document.body.classList.remove("dark");
-    this.toggleElement.setInnerHTML("🌚");
+    this.toggleElement.setInnerHTML("🌜");
     this.mode = "light";
   }
 

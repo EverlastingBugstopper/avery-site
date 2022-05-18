@@ -28,7 +28,7 @@ main {
   margin: 0px;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: fit-content;
 }
 
 nav {
@@ -83,8 +83,9 @@ nav > right {
 nav > * > button {
   position: absolute;
   bottom: 0px;
+  /* adjust the positioning of the button */
   width: 125px;
-  height: 137px;
+  height: 125px;
   text-align: center;
   font-size: 3.5rem;
 }
@@ -95,10 +96,6 @@ nav > right > button {
 
 nav > left > button {
   right: 0px;
-}
-
-a {
-  padding: 0.25rem;
 }
 
 h1 {
@@ -116,6 +113,7 @@ h1 {
   h1 > name > last {
     display: block;
   }
+
 }
 
 article {
@@ -125,5 +123,21 @@ article {
   padding-top: 40px;
   padding-left: 10%;
   padding-right: 10%;
-  padding-bottom: 1%;
+  padding-bottom: auto;
+  overflow-wrap: break-words;
+}
+
+
+a {
+  padding: 0.25rem;
+  /* when we have room, it's nice to put the links all on the same line */
+  display: inline-block;
+  line-height: 2rem;
+}
+
+@media only screen and (max-width: 1050px) {
+  /* it looks weird on small screens though, so let's split them up */
+  a {
+    display: inline;
+  }
 }
