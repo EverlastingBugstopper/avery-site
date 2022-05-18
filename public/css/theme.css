@@ -1,0 +1,143 @@
+/* text styling and colors */
+body {
+  background-color: var(--primary-bg-color);
+  color: var(--primary-font-color);
+  /* extra egregious transition times on the ol' dark mode ;) */
+  transition: background-color 1.5s, color 1.5s, font-weight 1.5s,
+    text-shadow 1.5s, fill 1.5s;
+}
+
+nav > right,
+nav > left {
+  background-color: var(--secondary-font-color);
+}
+
+nav > * > button {
+  font-family: "Muli", sans-serif;
+  color: var(--primary-bg-color);
+  font-weight: bold;
+  text-shadow: var(--link-shadow-depth) var(--link-shadow-color);
+}
+
+h1 {
+  font-family: "Royal Acidbath Outline", serif;
+  color: var(--primary-font-color);
+  font-size: 6rem;
+  line-height: 5.5rem;
+  text-align: center;
+  font-weight: var(--h1-font-weight);
+}
+
+h1 > emoji {
+  text-shadow: 5px 5px 0px var(--cloudflare-color),
+    10px 10px 0px var(--rust-color),
+    15px 15px 0px var(--apollo-highlight-bg-color),
+    20px 20px 0px var(--secondary-font-color);
+}
+
+a > emoji {
+  text-shadow: 1.5px 1.5px 0px var(--cloudflare-color),
+    3px 3px 0px var(--rust-color),
+    4.5px 4.5px 0px var(--apollo-highlight-bg-color),
+    6px 6px 0px var(--secondary-font-color);
+}
+
+article {
+  font-family: "Muli", sans-serif;
+  color: var(--primary-font-color);
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+
+button {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+name > first {
+  color: var(--primary-font-color);
+}
+
+name > last {
+  color: var(--secondary-font-color);
+}
+
+a {
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--secondary-font-color);
+  border-radius: 5px;
+  transition: color 300ms, background-color 300ms, text-shadow 300ms;
+}
+
+a:hover,
+a:focus,
+a:active {
+  text-shadow: var(--link-shadow-depth) var(--link-shadow-color);
+  color: var(--link-highlight-font-color) !important;
+  background-color: var(--link-highlight-bg-color);
+}
+
+a.cloudflare {
+  color: var(--cloudflare-color);
+}
+
+a.cloudflare:hover,
+a.cloudflare:focus,
+a.cloudflare:active {
+  background-color: var(--cloudflare-highlight-bg-color);
+}
+
+a.apollo {
+  color: var(--apollo-color);
+}
+
+a.apollo:hover,
+a.apollo:focus,
+a.apollo:active {
+  background-color: var(--apollo-highlight-bg-color);
+}
+
+a.rust {
+  color: var(--rust-color);
+}
+
+a.rust:hover,
+a.rust:focus,
+a.rust:active {
+  background-color: var(--rust-highlight-bg-color);
+}
+
+a.github {
+  color: var(--github-color);
+}
+
+a.github:hover,
+a.github:focus,
+a.github:active {
+  background-color: var(--github-highlight-bg-color);
+}
+
+a.twitter {
+  color: var(--twitter-color);
+}
+
+a.twitter:hover,
+a.twitter:focus,
+a.twitter:active {
+  background-color: var(--twitter-highlight-bg-color);
+}
+
+a.web {
+  color: var(--web-color);
+}
+
+a.web:hover,
+a.web:focus,
+a.web:active {
+  background-color: var(--web-highlight-bg-color);
+}

@@ -1,0 +1,15 @@
+/* font imports */
+@font-face {
+  font-family: "Royal Acidbath Outline";
+  src: url("../fonts/royal_acid_o.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Royal Acidbath";
+  src: url("../fonts/royal_acid.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Muli";
+  src: url("../fonts/muli.ttf") format("truetype");
+}

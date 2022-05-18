@@ -1,0 +1,142 @@
+/* layout */
+html {
+  position: absolute;
+  top: 0px;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  /* remove the horizontal scroller */
+  overflow-x: hidden;
+  position: relative;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+main {
+  /* put the main content on a layer underneath the expanded menu */
+  z-index: 0;
+  padding: 0px;
+  padding-top: 50px;
+  padding-bottom: 0px;
+  margin: 0px;
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+}
+
+nav {
+  /* put the nav on a layer above the content */
+  z-index: 1;
+  /* let's put this exactly where we want it */
+  position: absolute;
+  /* affix the nav to the top of the screen */
+  top: 0;
+  left: 0;
+  right: 0;
+  /* make it the whole screen width */
+  width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+  /* now make it a flexbox */
+  display: flex;
+  /* we have two elements, in the top left and top right corners */
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  /* set the height */
+  height: 100px;
+  overflow-x: hidden;
+}
+
+nav > right,
+nav > left {
+  /* fix the buttons in place */
+  position: absolute;
+  /* make a rounded rectangle */
+  border-radius: 30%;
+  /* adjust size of rectangle */
+  padding: 80px;
+  height: 100px;
+  width: 115px;
+  /* only show the bottom of the rectangle */
+  top: -160px;
+}
+
+nav > left {
+  /* only show the bottom right corner of the rectangle */
+  left: -160px;
+  /* TODO: remove this once we have hamburger menu links */
+  display: none;
+}
+
+nav > right {
+  /* only show the bottom left corner of the rectangle */
+  right: -160px;
+}
+
+nav > * > button {
+  position: absolute;
+  bottom: 0px;
+  /* adjust the positioning of the button */
+  width: 125px;
+  height: 125px;
+  text-align: center;
+  font-size: 3.5rem;
+}
+
+nav > right > button {
+  left: 0px;
+}
+
+nav > left > button {
+  right: 0px;
+}
+
+h1 {
+  margin: 0px;
+  padding-top: 0px;
+}
+
+@media only screen and (max-width: 1050px) {
+  h1 > emoji {
+    padding-bottom: 20px;
+    display: block;
+  }
+
+  h1 > name > first,
+  h1 > name > last {
+    display: block;
+  }
+}
+
+article {
+  max-width: 1050px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 8%;
+  overflow-wrap: break-words;
+}
+
+a {
+  padding: 0.25rem;
+  /* when we have room, it's nice to put the links all on the same line */
+  display: inline-block;
+  line-height: 2rem;
+}
+
+@media only screen and (max-width: 1050px) {
+  /* it looks weird on small screens though, so let's split them up */
+  a {
+    display: inline;
+  }
+}
