@@ -104,6 +104,13 @@ h1 {
   padding-top: 0px;
 }
 
+h1 > button {
+  font-size: 1em;
+  padding-top: 0px;
+  padding-bottom: 2%;
+  padding-right: 4%;
+}
+
 @media only screen and (max-width: 1050px) {
   h1 > emoji {
     padding-bottom: 20px;

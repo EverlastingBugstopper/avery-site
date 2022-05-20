@@ -6,6 +6,7 @@ import { EmojiPresenter } from "./emoji.mjs";
 const forageForElements = () => {
   const elementInits = [
     { DOMId: "title-emoji" },
+    { DOMId: "emoji-play-pause" },
     { DOMId: "site-emoji" },
     { DOMId: "lighting-mode-switch" },
     { id: "body", handle: window.document.body },
@@ -16,6 +17,14 @@ const forageForElements = () => {
     {
       id: "light-query",
       handle: window.matchMedia("(prefers-color-scheme: light)"),
+    },
+    {
+      id: "reduced-motion-query",
+      handle: window.matchMedia("(prefers-reduced-motion: reduce)"),
+    },
+    {
+      id: "no-preference-query",
+      handle: window.matchMedia("(prefers-reduced-motion: no-preference)"),
     },
   ];
   return new ElementJar(elementInits);
@@ -33,7 +42,11 @@ const setup = () => {
         "dark-query",
       ])
     ),
-    new EmojiPresenter(elementJar.scoop(["title-emoji", "site-emoji"])),
+    new EmojiPresenter(
+      elementJar.scoop(["title-emoji", "site-emoji"]),
+      elementJar.scoop(["emoji-play-pause"]),
+      elementJar.scoop(["reduced-motion-query", "no-preference-query"])
+    ),
   ];
 };
 
