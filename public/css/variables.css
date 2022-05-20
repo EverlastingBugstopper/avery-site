@@ -1,0 +1,74 @@
+/* theme colors */
+:root,
+body.light {
+  --h1-font-weight: bold;
+  --primary-bg-color: #fff;
+  --primary-font-color: #242038;
+  --secondary-font-color: #41a161;
+  --link-highlight-font-color: var(--primary-bg-color);
+  --link-highlight-bg-color: var(--secondary-font-color);
+  --link-shadow-color: var(--primary-font-color);
+  --link-shadow-depth: 1px 1px;
+  --web-color: #0000ee;
+  --web-highlight-bg-color: var(--web-color);
+  --cloudflare-color: #f6821f;
+  --cloudflare-highlight-bg-color: var(--cloudflare-color);
+  --apollo-color: #3f20ba;
+  --apollo-highlight-bg-color: var(--apollo-color);
+  --rust-color: #ca4e1e;
+  --rust-highlight-bg-color: var(--rust-color);
+  --twitter-color: #1e9bef;
+  --twitter-highlight-bg-color: var(--twitter-color);
+  --github-color: #24292f;
+  --github-highlight-bg-color: var(--github-color);
+  --menu-button-size: 25px;
+}
+
+/* dark mode block is duplicated below,
+  only edit one, then copy to other */
+body.dark {
+  --h1-font-weight: normal;
+  --primary-font-color: #fff;
+  --secondary-font-color: #4ebd73;
+  --primary-bg-color: #2a2a2a;
+  --link-shadow-depth: 2px 2px;
+  --apollo-color: #ad9bf6;
+  --apollo-highlight-bg-color: #3f20ba;
+  --cloudflare-highlight-bg-color: #b86115;
+  --github-color: #e1e1e1;
+  --github-highlight-bg-color: #424b56;
+  --twitter-highlight-bg-color: #1878b8;
+  --web-color: #3cc1ff;
+  --web-highlight-bg-color: #0000ee;
+  --link-highlight-font-color: #fff;
+  --link-shadow-color: var(--primary-bg-color);
+  --link-highlight-bg-color: #2f7145;
+}
+
+/* dark mode block is duplicated above,
+  only edit one, then copy to other.
+  i believe that we need both so that
+  the page doesn't flicker while it waits for
+  JavaScript to do its thing. probably a good
+  candidate for a CSS compiler of some sort
+*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    --h1-font-weight: normal;
+    --primary-font-color: #fff;
+    --secondary-font-color: #4ebd73;
+    --primary-bg-color: #2a2a2a;
+    --link-shadow-depth: 2px 2px;
+    --apollo-color: #ad9bf6;
+    --apollo-highlight-bg-color: #3f20ba;
+    --cloudflare-highlight-bg-color: #b86115;
+    --github-color: #e1e1e1;
+    --github-highlight-bg-color: #424b56;
+    --twitter-highlight-bg-color: #1878b8;
+    --web-color: #3cc1ff;
+    --web-highlight-bg-color: #0000ee;
+    --link-highlight-font-color: #fff;
+    --link-shadow-color: var(--primary-bg-color);
+    --link-highlight-bg-color: #2f7145;
+  }
+}

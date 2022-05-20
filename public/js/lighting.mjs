@@ -8,17 +8,13 @@ class LightingManager {
     this.bodyElement = bodyElement;
     this.lightQuery = lightQuery;
     this.darkQuery = darkQuery;
-    this.watching = false;
   }
 
   // if someone switches their OS level lighting mode
   // detect it and update accordingly
   watch() {
-    if (!this.watching) {
-      this.lightQuery.addListener((e) => e.matches && this.setLight());
-      this.darkQuery.addListener((e) => e.matches && this.setDark());
-      this.watching = true;
-    }
+    this.lightQuery.addListener((e) => e.matches && this.setLight());
+    this.darkQuery.addListener((e) => e.matches && this.setDark());
   }
 
   // sets the lighting to dark mode
@@ -26,9 +22,7 @@ class LightingManager {
     this.toggleElement.setInnerHTML("☀️");
     this.bodyElement.addClass("dark");
     this.bodyElement.removeClass("light");
-    if (localStorage) {
-      localStorage.setItem(MODE_KEY, "dark");
-    }
+    localStorage.setItem(MODE_KEY, "dark");
     this.mode = "dark";
   }
 
@@ -37,9 +31,7 @@ class LightingManager {
     this.toggleElement.setInnerHTML("🌜");
     this.bodyElement.addClass("light");
     this.bodyElement.removeClass("dark");
-    if (localStorage) {
-      localStorage.setItem(MODE_KEY, "light");
-    }
+    localStorage.setItem(MODE_KEY, "light");
     this.mode = "light";
   }
 
@@ -65,9 +57,8 @@ class LightingManager {
   }
 
   enable() {
-    this.toggleElement.enable();
-    this.toggleElement.listenForClick(() => this.toggle());
     this.watch();
+    this.toggleElement.listenForClick(() => this.toggle());
     // first, check local storage
     const storedMode = localStorage && localStorage.getItem(MODE_KEY);
     if (!storedMode) {

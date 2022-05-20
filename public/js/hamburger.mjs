@@ -38,7 +38,6 @@ class HamburgerHelper {
   }
 
   enable() {
-    // this.toggleElement.enable();
     this.toggleElement.listenForClick(() => this.toggle());
   }
 }
