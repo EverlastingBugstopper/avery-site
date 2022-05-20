@@ -86,7 +86,7 @@ class Element {
 
   // enables an element by removing the 'disabled' attribute
   enable() {
-    return this.removeAttribute("disabled")
+    return this.removeAttribute("disabled");
   }
 
   // sets the title attribute on an element
