@@ -15,11 +15,17 @@ jobs:
 
       - name: Normalize branch for Vercel
         id: normalize-branch
-        run: BRANCH=${{ steps.git-branch.outputs.name }}; echo ::set-output name=name::${BRANCH/\//-}
+        run: |
+          BRANCH=${{ steps.git-branch.outputs.name }}; \
+          echo ::set-output name=name::${BRANCH/\//-}
 
       - name: Get Vercel preview URL
-        run: if [ ${{ steps.normalize-branch.outputs.name }} = "main" ]; then URL="https://averyharnish.com"; else URL="https://avery-site-git-${{ steps.normalize-branch.outputs.name }}-averyharnish.vercel.app"; fi; echo ::set-output name=url::$URL
         id: vercel
+        run: |
+          if [ ${{ steps.normalize-branch.outputs.name }} = "main" ]; \
+          then URL="https://averyharnish.com"; \
+          else URL="https://avery-site-git-${{ steps.normalize-branch.outputs.name }}-averyharnish.vercel.app"; \
+          fi; echo ::set-output name=url::$URL
 
       - name: Run Lighthouse Audit
         uses: foo-software/lighthouse-check-action@v8.0.1
@@ -33,22 +39,33 @@ jobs:
       - name: Install npm dependencies
         run: npm i
 
-      - name: Set Lighthouse patch branch name (on main branch only)
-        if: steps.git-branch.outputs.name == 'main'
+      - name: Check if we should make a comment tests on a PR, commit tests to main, or do nothing
+        id: action-type
+        run: |
+          if [[ ${{ steps.normalize-branch.outputs.name }} == "main" ]]; then \
+          if [[ ${{ github.event.head_commit.message }} == *"updates lighthouse badges"* ]]; \
+          then RESULT="nothing";  \
+          else RESULT="commit"; fi; \
+          else RESULT="comment"; fi; \
+          echo ::set-output name=result::$RESULT
+
+      - name: Set Lighthouse patch branch name
+        if: steps.action-type.result == 'commit'
         id: patch-branch
         run: echo ::set-output name=name::"lighthouse-patches/${{ steps.git-branch.outputs.name }}"
 
-      - name: Generate Lighthouse badges (on main branch only)
-        if: steps.git-branch.outputs.name == 'main'
+      - name: Generate Lighthouse badges
+        if: steps.action-type.result == 'commit'
         id: badges
         run: npm run badges:write
 
-      - name: Run prettier
+      - name: Run prettier to format the Lighthouse badges
+        if: steps.action-type.result == 'commit'
         run: npm run format
 
-      - name: Create PR with Lighthouse results (on main branch only)
+      - name: Create PR with Lighthouse results
         id: badge-pr
-        if: steps.git-branch.outputs.name == 'main'
+        if: steps.action-type.result == 'commit'
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
@@ -57,25 +74,25 @@ jobs:
           branch: ${{ steps.patch-branch.outputs.name }}
 
       - name: Automerge Lighthouse badge PR (on main branch only)
-        if: steps.git-branch.outputs.name == 'main' && steps.badge-pr.outputs.pull-request-operation == 'created'
+        if: steps.action-type.result == 'commit' && steps.badge-pr.outputs.pull-request-operation == 'created'
         uses: peter-evans/enable-pull-request-automerge@v2
         with:
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
           pull-request-number: ${{ steps.badge-pr.outputs.pull-request-number }}
           merge-method: rebase
 
-      - name: Find current PR (on non-main branch only)
-        if: steps.git-branch.outputs.name != 'main'
+      - name: Find current PR
+        if: steps.action-type.result == 'comment'
         uses: jwalton/gh-find-current-pr@v1
         id: finder
 
-      - name: Generate Lighthouse badge comment (on non-main branch only)
-        if: steps.git-branch.outputs.name != 'main'
+      - name: Generate Lighthouse badge comment
+        if: steps.action-type.result == 'comment'
         id: badge-comment
         run: npm run badges:comment
 
-      - name: Create comment with Lighthouse results (on non-main branch only)
-        if: steps.git-branch.outputs.name != 'main'
+      - name: Create comment with Lighthouse results
+        if: steps.action-type.result == 'comment'
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           number: ${{ steps.finder.outputs.pr }}
