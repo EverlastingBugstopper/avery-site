@@ -1,3 +1,5 @@
+const MODE_KEY = "emoji-mode";
+
 // iterate through a bunch of emojis in order
 class EmojiPresenter {
   // create an emoji presenter by passing one or more
@@ -25,9 +27,6 @@ class EmojiPresenter {
     // initialize presentation iterator
     this.emojI = 0;
 
-    // disabled until we enable it
-    this.mode = "disabled";
-
     // haven't registered the callback that starts the presentation
     this.cbRegistered = false;
 
@@ -38,8 +37,8 @@ class EmojiPresenter {
   // if someone swithces their motion preference levels, we will detect
   watch() {
     if (!this.watching) {
-      this.reducedMotionQuery.addListener((e) => e.matches && this.disable());
-      this.noPreferenceQuery.addListener((e) => e.matches && this.enable());
+      this.reducedMotionQuery.addListener((e) => e.matches && this.pause());
+      this.noPreferenceQuery.addListener((e) => e.matches && this.play());
       this.watching = true;
     }
   }
@@ -48,8 +47,8 @@ class EmojiPresenter {
   next() {
     // setInterval takes a callback, so a callback is what it will get
     return () => {
-      // if the presentation is disabled, don't do anything
-      if (this.isEnabled()) {
+      // if the presentation is paused, don't do anything
+      if (this.isPlaying()) {
         // find the emoji to display
         const emojiOnDeck = this.emojis[this.emojI];
 
@@ -69,47 +68,63 @@ class EmojiPresenter {
     };
   }
 
-  // checks if the presentation is enabled
-  isEnabled() {
-    return this.mode === "enabled";
+  // checks if the presentation is playing
+  isPlaying() {
+    return this.mode === "playing";
   }
 
-  // checks if the presentation is disabled
-  isDisabled() {
-    return this.mode === "disabled";
+  // checks if the presentation is paused
+  isPaused() {
+    return this.mode === "paused";
   }
 
-  // swap between enabled and disabled
+  play() {
+    this.mode = "playing";
+    if (localStorage) {
+      localStorage.setItem(MODE_KEY, "playing");
+    }
+  }
+
+  pause() {
+    this.mode = "paused";
+    if (localStorage) {
+      localStorage.setItem(MODE_KEY, "paused");
+    }
+  }
+
+  // swap between playing and paused
   toggle() {
-    if (this.isDisabled()) {
-      this.enable();
-    } else if (this.isEnabled()) {
-      this.disable();
+    if (this.isPaused()) {
+      this.play();
+    } else if (this.isPlaying()) {
+      this.pause();
     } else {
-      this.disable();
+      this.pause();
     }
   }
 
   // start the presentation
   enable() {
-    // if the user does not want reduced motion, start the presentation
-    if (this.isDisabled()) {
-      this.mode = "enabled";
-      if (!this.reducedMotionQuery.matches) {
-        if (!this.cbRegistered) {
-          setInterval(this.next(), this.interval);
-          this.watch();
-          this.toggleElement.enable();
-          this.toggleElement.listenForClick(() => this.toggle());
-          this.cbRegistered = true;
-        }
+    const userSettings = localStorage && localStorage.getItem(MODE_KEY);
+    if (!userSettings) {
+      if (this.reducedMotionQuery.matches) {
+        this.pause();
+      } else {
+        this.play();
       }
+    } else if (userSettings === "playing") {
+      this.play();
+    } else if (userSettings === "paused") {
+      this.pause();
+    } else {
+      this.play();
     }
-  }
-
-  disable() {
-    if (this.isEnabled()) {
-      this.mode = "disabled";
+    if (!this.cbRegistered) {
+      setInterval(this.next(), this.interval);
+      this.watch();
+      this.toggleElement.enable();
+      this.toggleElement.listenForClick(() => this.toggle());
+      this.cbRegistered = true;
     }
   }
 }
