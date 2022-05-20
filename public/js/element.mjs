@@ -79,6 +79,16 @@ class Element {
     return this._getDOMHandle().setAttribute(name, value);
   }
 
+  // removes a KV attribute on an element
+  removeAttribute(name) {
+    return this._getDOMHandle().removeAttribute(name);
+  }
+
+  // enables an element by removing the 'disabled' attribute
+  enable() {
+    return this.removeAttribute("disabled")
+  }
+
   // sets the title attribute on an element
   setTitle(value) {
     return this.setAttribute("title", value);
