@@ -73,7 +73,7 @@ jobs:
           title: "chore: updates lighthouse badges for `${{ steps.git-branch.outputs.name }}`"
           branch: ${{ steps.patch-branch.outputs.name }}
 
-      - name: Automerge Lighthouse badge PR (on main branch only)
+      - name: Automerge Lighthouse badge PR
         if: steps.action-type.result == 'commit' && steps.badge-pr.outputs.pull-request-operation == 'created'
         uses: peter-evans/enable-pull-request-automerge@v2
         with:
