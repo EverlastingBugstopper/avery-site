@@ -50,22 +50,22 @@ jobs:
           echo ::set-output name=result::$RESULT
 
       - name: Set Lighthouse patch branch name
-        if: steps.action-type.result == 'commit'
+        if: steps.action-type.outputs.result == 'commit'
         id: patch-branch
         run: echo ::set-output name=name::"lighthouse-patches/${{ steps.git-branch.outputs.name }}"
 
       - name: Generate Lighthouse badges
-        if: steps.action-type.result == 'commit'
+        if: steps.action-type.outputs.result == 'commit'
         id: badges
         run: npm run badges:write
 
       - name: Run prettier to format the Lighthouse badges
-        if: steps.action-type.result == 'commit'
+        if: steps.action-type.outputs.result == 'commit'
         run: npm run format
 
       - name: Create PR with Lighthouse results
         id: badge-pr
-        if: steps.action-type.result == 'commit'
+        if: steps.action-type.outputs.result == 'commit'
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
@@ -74,7 +74,7 @@ jobs:
           branch: ${{ steps.patch-branch.outputs.name }}
 
       - name: Automerge Lighthouse badge PR
-        if: steps.action-type.result == 'commit' && steps.badge-pr.outputs.pull-request-operation == 'created'
+        if: steps.action-type.outputs.result == 'commit' && steps.badge-pr.outputs.pull-request-operation == 'created'
         uses: peter-evans/enable-pull-request-automerge@v2
         with:
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
@@ -82,17 +82,17 @@ jobs:
           merge-method: rebase
 
       - name: Find current PR
-        if: steps.action-type.result == 'comment'
+        if: steps.action-type.outputs.result == 'comment'
         uses: jwalton/gh-find-current-pr@v1
         id: finder
 
       - name: Generate Lighthouse badge comment
-        if: steps.action-type.result == 'comment'
+        if: steps.action-type.outputs.result == 'comment'
         id: badge-comment
         run: npm run badges:comment
 
       - name: Create comment with Lighthouse results
-        if: steps.action-type.result == 'comment'
+        if: steps.action-type.outputs.result == 'comment'
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           number: ${{ steps.finder.outputs.pr }}
