@@ -11,16 +11,23 @@
     <link rel="icon" type="image/png" href="./favicon.png" />
 
     <!-- Custom styles for this page -->
-    <link href="css/variables.css" rel="stylesheet" />
     <link href="css/theme.css" rel="stylesheet" />
     <link href="css/fonts.css" rel="stylesheet" />
     <link href="css/layout.css" rel="stylesheet" />
+    <link
+      href="css/animations.css"
+      rel="stylesheet"
+      media="(prefers-reduced-motion: no-preference)"
+    />
   </head>
   <body>
     <nav id="navbar">
-      <left><button>🍔</button></left>
+      <left
+        ><button disabled><emoji>🍔</emoji></button></left
+      >
       <right>
         <button
+          disabled
           type="button"
           title="switch between lighting modes"
           id="lighting-mode-switch"
@@ -29,7 +36,14 @@
     </nav>
     <main>
       <h1>
-        <emoji id="title-emoji">😁</emoji>
+        <button
+          disabled
+          type="button"
+          title="stop/start the emoji presentation"
+          id="emoji-play-pause"
+        >
+          <emoji id="title-emoji">😁</emoji>
+        </button>
         <name>
           <first>avery</first>
           <last>harnish</last>
