@@ -108,7 +108,12 @@ h1 > button {
   font-size: 1em;
   padding-top: 0px;
   padding-bottom: 2%;
-  padding-right: 4%;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 > button {
+    padding-right: 4%;
+  }
 }
 
 @media only screen and (max-width: 1050px) {
