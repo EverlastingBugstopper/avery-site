@@ -79,6 +79,10 @@ body {
   color: var(--primary-font-color);
 }
 
+button:disabled {
+  color: var(--primary-font-color);
+}
+
 nav > right,
 nav > left {
   background-color: var(--secondary-font-color);
