@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "badge-maker": "^3.3.1",
-    "browser-sync": "^2.27.9",
+    "browser-sync": "^2.29.1",
     "prettier": "^2.6.2"
   },
   "volta": {
