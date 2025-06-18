@@ -14,7 +14,7 @@ jobs:
 
       - name: Get Vercel preview URL
         id: vercel
-        run: echo "url=$(npm exec vercel deploy --token ${{ secrets.VERCEL_ACCESS_TOKEN }})" >> $GITHUB_OUTPUT
+        run: echo "url=$(npm exec vercel --token ${{ secrets.VERCEL_ACCESS_TOKEN }} deploy)" >> $GITHUB_OUTPUT
 
       - name: Run Lighthouse Audit
         uses: foo-software/lighthouse-check-action@v8.0.1
