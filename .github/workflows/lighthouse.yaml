@@ -9,23 +9,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Get branch name
-        id: git-branch
-        run: echo ::set-output name=name::${GITHUB_REF/refs\/heads\//}
-
-      - name: Normalize branch for Vercel
-        id: normalize-branch
-        run: |
-          BRANCH=${{ steps.git-branch.outputs.name }}; \
-          echo ::set-output name=name::${BRANCH/\//-}
+      - name: Install npm dependencies
+        run: npm install
 
       - name: Get Vercel preview URL
         id: vercel
-        run: |
-          if [ ${{ steps.normalize-branch.outputs.name }} = "main" ]; \
-          then URL="https://averyharnish.com"; \
-          else URL="https://avery-site-git-${{ steps.normalize-branch.outputs.name }}-avery-harnishs-projects-d83aec50.vercel.app"; \
-          fi; echo ::set-output name=url::$URL
+        run: echo "url=$(npm exec vercel deploy)" >> $GITHUB_OUTPUT
 
       - name: Run Lighthouse Audit
         uses: foo-software/lighthouse-check-action@v8.0.1
@@ -47,12 +36,12 @@ jobs:
           then RESULT="nothing";  \
           else RESULT="commit"; fi; \
           else RESULT="comment"; fi; \
-          echo ::set-output name=result::$RESULT
+          echo result=$RESULT >> $GITHUB_OUTPUT
 
       - name: Set Lighthouse patch branch name
         if: steps.action-type.outputs.result == 'commit'
         id: patch-branch
-        run: echo ::set-output name=name::"lighthouse-patches/${{ steps.git-branch.outputs.name }}"
+        run: echo name="lighthouse-patches/${{ steps.git-branch.outputs.name }}" >> $GITHUB_OUTPUT
 
       - name: Generate Lighthouse badges
         if: steps.action-type.outputs.result == 'commit'
