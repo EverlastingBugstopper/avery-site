@@ -28,10 +28,14 @@ jobs:
       - name: Install npm dependencies
         run: npm i
 
+      - name: Get branch name
+        id: branch
+        run: echo "name=${GITHUB_REF/refs\/heads\//}" >> $GITHUB_OUTPU
+
       - name: Check if we should make a comment tests on a PR, commit tests to main, or do nothing
         id: action-type
         run: |
-          if [[ '${GITHUB_REF/refs\/heads\//}' == "main" ]]; then \
+          if [[ '${{ steps.branch.name }}' == "main" ]]; then \
           if [[ '${{ github.event.head_commit.message }}' == *"updates lighthouse badges"* ]]; \
           then RESULT="nothing";  \
           else RESULT="commit"; fi; \
