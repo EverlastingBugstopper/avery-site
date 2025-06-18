@@ -30,7 +30,7 @@ jobs:
 
       - name: Get branch name
         id: branch
-        run: echo "name=${GITHUB_REF/refs\/heads\//}" >> $GITHUB_OUTPU
+        run: echo "name=${GITHUB_REF/refs\/heads\//}" >> $GITHUB_OUTPUT
 
       - name: Check if we should make a comment tests on a PR, commit tests to main, or do nothing
         id: action-type
