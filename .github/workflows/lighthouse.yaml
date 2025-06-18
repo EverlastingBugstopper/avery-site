@@ -24,7 +24,7 @@ jobs:
         run: |
           if [ ${{ steps.normalize-branch.outputs.name }} = "main" ]; \
           then URL="https://averyharnish.com"; \
-          else URL="https://avery-site-git-${{ steps.normalize-branch.outputs.name }}-averyharnish.vercel.app"; \
+          else URL="https://avery-site-git-${{ steps.normalize-branch.outputs.name }}-avery-harnishs-projects-d83aec50.vercel.app"; \
           fi; echo ::set-output name=url::$URL
 
       - name: Run Lighthouse Audit
