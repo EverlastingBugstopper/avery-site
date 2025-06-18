@@ -31,7 +31,7 @@ jobs:
       - name: Check if we should make a comment tests on a PR, commit tests to main, or do nothing
         id: action-type
         run: |
-          if [[ '${{ steps.normalize-branch.outputs.name }}' == "main" ]]; then \
+          if [[ '${GITHUB_REF/refs\/heads\//}' == "main" ]]; then \
           if [[ '${{ github.event.head_commit.message }}' == *"updates lighthouse badges"* ]]; \
           then RESULT="nothing";  \
           else RESULT="commit"; fi; \
