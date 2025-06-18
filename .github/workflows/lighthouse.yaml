@@ -17,7 +17,7 @@ jobs:
         run: echo "url=\"$(vercel --token ${{ secrets.VERCEL_ACCESS_TOKEN }} deploy --yes | tr -d '\n')\"" >> $GITHUB_OUTPUT
 
       - name: Run Lighthouse Audit
-        uses: foo-software/lighthouse-check-action@v9.1.1
+        uses: foo-software/lighthouse-check-action@v12.0.1
         id: lighthouse
         with:
           urls: ${{ steps.vercel.outputs.url }}
