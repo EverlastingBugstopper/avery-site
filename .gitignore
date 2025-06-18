@@ -1,7 +1,6 @@
 node_modules
 dist
 .DS_Store
-.vercel
 
 # this shouldn't be committed because it is generated in CI
 lighthouse/report.json
