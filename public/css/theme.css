@@ -15,6 +15,8 @@ body.light {
   --cloudflare-highlight-bg-color: var(--cloudflare-color);
   --apollo-color: #3f20ba;
   --apollo-highlight-bg-color: var(--apollo-color);
+  --engine-color: #000000;
+  --engine-highlight-bg-color: var(--engine-color);
   --rust-color: #ca4e1e;
   --rust-highlight-bg-color: var(--rust-color);
   --twitter-color: #1e9bef;
@@ -24,8 +26,16 @@ body.light {
   --menu-button-size: 25px;
 }
 
-/* dark mode block is duplicated below,
-  only edit one, then copy to other */
+/* The color values in this dark mode block
+  are duplicated below in the media query.
+  Only edit one, then copy to other. 
+  
+  We need both definitions so that
+  the page doesn't flicker while it waits for
+  JavaScript to do its thing. 
+  
+  This is probably a good
+  candidate for a CSS compiler of some sort.*/
 body.dark {
   --h1-font-weight: normal;
   --primary-font-color: #fff;
@@ -37,7 +47,8 @@ body.dark {
   --cloudflare-highlight-bg-color: #b86115;
   --github-color: #e1e1e1;
   --github-highlight-bg-color: #424b56;
-  --twitter-highlight-bg-color: #1878b8;
+  --engine-color: #ffffff;
+  --engine-highlight-bg-color: #000000;
   --web-color: #3cc1ff;
   --web-highlight-bg-color: #0000ee;
   --link-highlight-font-color: #fff;
@@ -45,12 +56,7 @@ body.dark {
   --link-highlight-bg-color: #2f7145;
 }
 
-/* dark mode block is duplicated above,
-  only edit one, then copy to other.
-  i believe that we need both so that
-  the page doesn't flicker while it waits for
-  JavaScript to do its thing. probably a good
-  candidate for a CSS compiler of some sort
+/* This is the duplicated block referred to above.
 */
 @media (prefers-color-scheme: dark) {
   :root {
@@ -64,7 +70,6 @@ body.dark {
     --cloudflare-highlight-bg-color: #b86115;
     --github-color: #e1e1e1;
     --github-highlight-bg-color: #424b56;
-    --twitter-highlight-bg-color: #1878b8;
     --web-color: #3cc1ff;
     --web-highlight-bg-color: #0000ee;
     --link-highlight-font-color: #fff;
@@ -195,6 +200,16 @@ a.github:hover,
 a.github:focus,
 a.github:active {
   background-color: var(--github-highlight-bg-color);
+}
+
+a.engine {
+  color: var(--engine-color);
+}
+
+a.engine:hover,
+a.engine:focus,
+a.engine:active {
+  background-color: var(--engine-highlight-bg-color);
 }
 
 a.twitter {

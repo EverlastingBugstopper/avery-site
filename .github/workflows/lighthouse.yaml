@@ -1,7 +1,7 @@
 on:
   push:
     branches-ignore:
-      - 'lighthouse-patches/**'
+      - "lighthouse-patches/**"
 
 jobs:
   lighthouse:
@@ -97,4 +97,3 @@ jobs:
         with:
           number: ${{ steps.finder.outputs.pr }}
           message: ${{ steps.badge-comment.outputs.comment }}
-
