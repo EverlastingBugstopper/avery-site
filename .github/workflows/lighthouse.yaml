@@ -14,13 +14,13 @@ jobs:
 
       - name: Get Vercel preview URL
         id: vercel
-        run: echo "url=\"$(vercel --token ${{ secrets.VERCEL_ACCESS_TOKEN }} deploy --yes | tr -d '\n')\"" >> $GITHUB_OUTPUT
+        run: echo "url=\"$(vercel --token ${{ secrets.VERCEL_ACCESS_TOKEN }} deploy --yes)\"" >> $GITHUB_OUTPUT
 
       - name: Run Lighthouse Audit
         uses: foo-software/lighthouse-check-action@v12.0.1
         id: lighthouse
         with:
-          urlsJson: '[${{ steps.vercel.outputs.url }}]'
+          urlsJson: "[${{ steps.vercel.outputs.url }}]"
 
       - name: Save Lighthouse output to file
         run: echo '${{ steps.lighthouse.outputs.lighthouseCheckResults }}' > ./lighthouse/report.json
