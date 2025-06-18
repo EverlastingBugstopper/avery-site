@@ -22,8 +22,7 @@
   "devDependencies": {
     "badge-maker": "^3.3.1",
     "browser-sync": "^2.27.9",
-    "prettier": "^2.6.2",
-    "vercel": "^43.2.0"
+    "prettier": "^2.6.2"
   },
   "volta": {
     "node": "18.1.0"
