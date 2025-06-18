@@ -45,7 +45,7 @@ jobs:
       - name: Set Lighthouse patch branch name
         if: steps.action-type.outputs.result == 'commit'
         id: patch-branch
-        run: echo name="lighthouse-patches/${{ steps.git-branch.outputs.name }}" >> $GITHUB_OUTPUT
+        run: echo name="lighthouse-patches/${{ steps.branch.outputs.name }}" >> $GITHUB_OUTPUT
 
       - name: Generate Lighthouse badges
         if: steps.action-type.outputs.result == 'commit'
